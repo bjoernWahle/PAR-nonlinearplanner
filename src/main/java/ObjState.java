@@ -9,17 +9,17 @@ public class ObjState {
     }
 
     public boolean meetsPrecondition(Predicate precondition) {
-        /*if(predicateList.contains(precondition)) {
+        if(predicateList.contains(precondition)) {
             return true;
         } else {
             return false;
-        }*/
-        for(Predicate predicate:predicateList) {
+        }
+        /*for(Predicate predicate:predicateList) {
             if(predicate.equals(precondition)){
                 return true;
             };
         }
-        return false;
+        return false;*/
     }
 
     public boolean meetsPreconditions(List<Predicate> preconditions) {
@@ -46,5 +46,12 @@ public class ObjState {
 
     public void addPredicate(Predicate predicate) {
         predicateList.add(predicate);
+    }
+
+    @Override
+    public ObjState clone() {
+        ObjState newState = new ObjState();
+        newState.predicateList = predicateList;
+        return newState;
     }
 }

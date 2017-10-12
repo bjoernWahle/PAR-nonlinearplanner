@@ -1,11 +1,11 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class PickUp extends Operator {
+public class RightArmPickUp extends Operator {
     List<Predicate> preconditions;
     Block blockToPickUp;
 
-    PickUp(ObjState stateBefore, Block blockToPickUp) {
+    RightArmPickUp(ObjState stateBefore, Block blockToPickUp) {
         super(stateBefore);
         preconditions = new LinkedList<Predicate>();
         preconditions.add(new OnTable(blockToPickUp));
@@ -16,7 +16,7 @@ public class PickUp extends Operator {
         return arePreconditionsMet();
     }
 
-    public boolean arePreconditionsMet() {
+    private boolean arePreconditionsMet() {
         return stateBefore.meetsPreconditions(preconditions);
     }
 }

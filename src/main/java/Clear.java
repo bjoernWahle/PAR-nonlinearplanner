@@ -15,7 +15,7 @@ public class Clear extends Predicate {
         if(obj instanceof Clear) {
             return ((Clear) obj).block.name.equals(block.name);
         } else {
-            return true;
+            return false;
         }
     }
 }
