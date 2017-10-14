@@ -2,7 +2,7 @@ package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.operators.LeftArmPickUp;
 import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.operators.RightArmPickUp;
+import fib.par.nonlinearplanner.operators.RightArmPickUp;;
 import fib.par.nonlinearplanner.predicates.*;
 
 import java.util.HashSet;
