@@ -19,11 +19,12 @@ public class Planner {
     }
 
     public void executePlan(Plan plan) {
+        int opNum = 0;
         for(Operator operator: plan.operators) {
-            System.out.println(currentState);
+            System.out.println(opNum++ +":"+ currentState.simpleRepresentation());
             currentState = operator.execute(currentState);
         }
-        System.out.println(currentState);
+        System.out.println(opNum++ + ":" + currentState.simpleRepresentation());
     }
 
     public boolean isInFinalState() {

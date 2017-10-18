@@ -27,7 +27,7 @@ public abstract class Operator {
             State stateAfter = stateBefore.applyOperator(this);
             return stateAfter;
         } else {
-            throw new IllegalStateException("Cannot execute operator because preconditions are not met.");
+            throw new IllegalStateException("Cannot execute operator " + this + " because preconditions are not met.");
         }
     }
 

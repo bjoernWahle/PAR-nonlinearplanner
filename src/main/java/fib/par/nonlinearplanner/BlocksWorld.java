@@ -1,5 +1,6 @@
 package fib.par.nonlinearplanner;
 
+import fib.par.nonlinearplanner.operators.Leave;
 import fib.par.nonlinearplanner.operators.LeftArmPickUp;
 import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.operators.RightArmPickUp;;
@@ -12,8 +13,12 @@ import java.util.Set;
 
 public class BlocksWorld {
 
+    public static int MAX_COLUMNS;
+
     public static void main(String[] args) {
         // TODO parse configuration
+
+        BlocksWorld.MAX_COLUMNS = 3;
 
         List<Block> blocks = new LinkedList<Block>();
 
@@ -57,26 +62,50 @@ public class BlocksWorld {
         initialState.addPredicate(new EmptyArm(Arm.leftArm));
         initialState.addPredicate(new EmptyArm(Arm.rightArm));
 
+        // create used column predicates
+        int usedColumns = 0;
+        for(Predicate predicate : initialState.predicateSet) {
+            if(predicate instanceof OnTable) {
+                usedColumns++;
+            }
+        }
+        initialState.addPredicate(new UsedColumnsNum(usedColumns));
+
         // Final state
         State finalState = new State();
         finalState.addAllPredicates(heavierPredicates);
         finalState.addAllPredicates(lightBlockPredicates);
+        finalState.addPredicate(new EmptyArm(Arm.leftArm));
         finalState.addPredicate(new OnTable(c));
+        finalState.addPredicate(new OnTable(a));
         finalState.addPredicate(new Clear(c));
-        finalState.addPredicate(new Holding(a, Arm.leftArm));
+        finalState.addPredicate(new Clear(a));
+        finalState.addPredicate(new Clear(b));
         finalState.addPredicate(new Holding(b, Arm.rightArm));
 
-        LeftArmPickUp op1 = new LeftArmPickUp(a);
-        RightArmPickUp op2 = new RightArmPickUp(b);
+        // calculate used column predicates
+        int usedColumnsFinal = 0;
+        for(Predicate predicate : finalState.predicateSet) {
+            if(predicate instanceof OnTable) {
+                usedColumnsFinal++;
+            }
+        }
+        finalState.addPredicate(new UsedColumnsNum(usedColumnsFinal));
+
+        LeftArmPickUp op1 = new LeftArmPickUp(a, usedColumns);
+        RightArmPickUp op2 = new RightArmPickUp(b, usedColumns-1);
+        Leave op3 = new Leave(a, Arm.leftArm, usedColumns-2);
 
         LinkedList<Operator> operatorList = new LinkedList<Operator>();
         operatorList.add(op1);
         operatorList.add(op2);
+        operatorList.add(op3);
 
         Planner myPlanner = new Planner(initialState, finalState);
         myPlanner.executePlan(new Plan(operatorList));
 
-        System.out.println(myPlanner.isInFinalState());
+        System.out.println("The planner terminated in the final state: "+ myPlanner.isInFinalState());
+        System.out.println("The final state should be: " +myPlanner.finalState.simpleRepresentation());
 
     }
 }

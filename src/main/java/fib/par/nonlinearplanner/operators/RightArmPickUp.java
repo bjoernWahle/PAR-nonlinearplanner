@@ -6,7 +6,7 @@ import fib.par.nonlinearplanner.predicates.*;
 public class RightArmPickUp extends Operator {
     Block blockToPickUp;
 
-    public RightArmPickUp(Block blockToPickUp) {
+    public RightArmPickUp(Block blockToPickUp, int usedColsBefore) {
         super();
         this.blockToPickUp = blockToPickUp;
         // set preconditions
@@ -14,9 +14,10 @@ public class RightArmPickUp extends Operator {
         preconditions.add(new Clear(blockToPickUp));
         // set add list
         addList.add(new Holding(blockToPickUp, Arm.rightArm));
+        addList.add(new UsedColumnsNum(usedColsBefore-1));
         // set deleteList
         deleteList.add(new OnTable(blockToPickUp));
-        deleteList.add(new Clear(blockToPickUp));
         deleteList.add(new EmptyArm(Arm.rightArm));
+        deleteList.add(new UsedColumnsNum(usedColsBefore));
     }
 }

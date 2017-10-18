@@ -1,6 +1,10 @@
 package fib.par.nonlinearplanner;
 
+import com.sun.org.apache.xpath.internal.operations.Neg;
 import fib.par.nonlinearplanner.operators.Operator;
+import fib.par.nonlinearplanner.predicates.Heavier;
+import fib.par.nonlinearplanner.predicates.LightBlock;
+import fib.par.nonlinearplanner.predicates.Negation;
 import fib.par.nonlinearplanner.predicates.Predicate;
 
 import java.util.HashSet;
@@ -18,10 +22,10 @@ public class State {
     }
 
     public boolean meetsPrecondition(Predicate precondition) {
-        if(predicateSet.contains(precondition)) {
-            return true;
+        if(precondition instanceof Negation) {
+            return !predicateSet.contains(((Negation) precondition).predicate);
         } else {
-            return false;
+            return predicateSet.contains(precondition);
         }
     }
 
@@ -77,5 +81,19 @@ public class State {
     @Override
     public int hashCode() {
         return predicateSet != null ? predicateSet.hashCode() : 0;
+    }
+
+    public String simpleRepresentation() {
+        String str = "";
+        str += "State: ";
+        str += "(Predicates: ";
+        for(Predicate predicate : predicateSet) {
+            if(!(predicate instanceof Heavier || predicate instanceof LightBlock)) {
+                str += predicate + ",";
+            }
+        }
+        str = str.substring(0, str.length()-1);
+        str += ")";
+        return str;
     }
 }
