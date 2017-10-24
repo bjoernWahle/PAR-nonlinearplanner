@@ -2,6 +2,10 @@ package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class On extends Predicate {
     Block lowerBlock;
@@ -51,5 +55,11 @@ public class On extends Predicate {
 
     public Block getUpperBlock() {
         return upperBlock;
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        // TODO implement
+        return new HashSet<Operator>();
     }
 }

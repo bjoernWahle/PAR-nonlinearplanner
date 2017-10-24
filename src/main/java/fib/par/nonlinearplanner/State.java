@@ -98,6 +98,14 @@ public class State {
         return str;
     }
 
+    Set<Operator> getPossiblePreOperators() {
+        Set<Operator> operators = new HashSet<Operator>();
+        for(Predicate predicate : predicateSet) {
+            operators.addAll(predicate.getPreOperators());
+        }
+        return operators;
+    }
+
     boolean isValid() {
         boolean isValid = true;
         // check empty-arm and holding

@@ -2,8 +2,13 @@ package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
+import fib.par.nonlinearplanner.operators.LeftArmUnstack;
+import fib.par.nonlinearplanner.operators.Operator;
+import fib.par.nonlinearplanner.operators.RightArmUnstack;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Clear extends Predicate {
     final Block block;
@@ -40,5 +45,19 @@ public class Clear extends Predicate {
     @Override
     public int hashCode() {
         return block != null ? block.hashCode() : 0;
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        Set<Operator> preOperators = new HashSet<Operator>();
+        List<Block> otherBlocks = BlocksWorld.getBlocksList();
+        otherBlocks.remove(block);
+        for(Block otherBlock : otherBlocks) {
+            if(otherBlock.weight == 1) {
+                preOperators.add(new LeftArmUnstack(otherBlock, block));
+            }
+            preOperators.add(new RightArmUnstack(otherBlock,block));
+        }
+        return preOperators;
     }
 }

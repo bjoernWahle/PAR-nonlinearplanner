@@ -1,6 +1,10 @@
 package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Block;
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Heavier extends Predicate {
     final Block block1;
@@ -36,5 +40,10 @@ public class Heavier extends Predicate {
     @Override
     public String toString() {
         return "Heavier("+block1+","+block2+")";
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        return new HashSet<Operator>();
     }
 }

@@ -1,5 +1,10 @@
 package fib.par.nonlinearplanner.predicates;
 
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class UsedColumnsNum extends Predicate {
     int usedColumns;
 
@@ -25,5 +30,11 @@ public class UsedColumnsNum extends Predicate {
     @Override
     public String toString() {
         return "UsedColumnsNum("+usedColumns+")";
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        // TODO implement
+        return new HashSet<Operator>();
     }
 }

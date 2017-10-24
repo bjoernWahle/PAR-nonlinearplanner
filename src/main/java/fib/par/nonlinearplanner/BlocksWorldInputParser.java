@@ -22,6 +22,7 @@ class BlocksWorldInputParser {
             // extract max column number
             String maxColumns = columnsString.split("MaxColumns=")[1];
             int maxColumnsInt = Integer.parseInt(maxColumns.substring(0, maxColumns.length()-1));
+            BlocksWorld.MAX_COLUMNS = maxColumnsInt;
 
             // extract blocks
             String blocks = blocksString.split("Blocks=")[1];

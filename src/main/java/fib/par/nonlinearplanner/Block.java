@@ -35,4 +35,8 @@ public class Block {
         }
         return string;
     }
+
+    public String simpleRepresentation() {
+        return name;
+    }
 }

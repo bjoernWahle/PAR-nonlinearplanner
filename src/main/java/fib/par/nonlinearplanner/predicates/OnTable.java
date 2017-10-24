@@ -2,7 +2,11 @@ package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
+import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.Predicate;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class OnTable extends Predicate {
     Block block;
@@ -44,5 +48,11 @@ public class OnTable extends Predicate {
 
     public Block getBlock() {
         return block;
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        // TODO implement
+        return new HashSet<Operator>();
     }
 }

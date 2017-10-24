@@ -1,5 +1,10 @@
 package fib.par.nonlinearplanner.predicates;
 
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Negation extends Predicate {
     public Predicate predicate;
 
@@ -25,5 +30,10 @@ public class Negation extends Predicate {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        return new HashSet<Operator>();
     }
 }

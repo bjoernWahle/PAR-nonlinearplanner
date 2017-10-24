@@ -29,6 +29,6 @@ public class Leave extends Operator {
 
     @Override
     public String toString() {
-        return "Leave("+blockToLeave +","+arm+")";
+        return "Leave("+blockToLeave.simpleRepresentation() +","+arm+")";
     }
 }

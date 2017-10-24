@@ -49,6 +49,12 @@ public class BlocksWorld {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
         Planner myPlanner = parser.readInputFile("input");
-        System.out.println(myPlanner.initialState.isValid());
+        System.out.println(myPlanner.finalState.getPossiblePreOperators());
+        EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
+        System.out.println(emptyArm.getPreOperators());
+    }
+
+    public static List<Block> getBlocksList() {
+        return blocksList;
     }
 }

@@ -1,5 +1,9 @@
 package fib.par.nonlinearplanner.predicates;
 
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.Set;
+
 public abstract class Predicate {
 
     public static Predicate getPredicateFromString(String string) {
@@ -16,4 +20,6 @@ public abstract class Predicate {
         }
         return null;
     }
+
+    public abstract Set<Operator> getPreOperators();
 }

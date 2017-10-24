@@ -1,7 +1,14 @@
 package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Arm;
+import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
+import fib.par.nonlinearplanner.operators.Leave;
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class EmptyArm extends Predicate {
     final Arm arm;
@@ -45,5 +52,23 @@ public class EmptyArm extends Predicate {
 
     public Arm getArm() {
         return arm;
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        Set<Operator> preOperators = new HashSet<Operator>();
+        System.out.println(BlocksWorld.MAX_COLUMNS);
+        for(Block block : BlocksWorld.getBlocksList()) {
+            if(arm.equals(Arm.leftArm)) {
+                if(block.weight > 1) {
+                    continue;
+                }
+            }
+            for(int i = 0; i < BlocksWorld.MAX_COLUMNS; i++) {
+                preOperators.add(new Leave(block, arm, i));
+            }
+            // TODO add Stack() operators
+        }
+        return preOperators;
     }
 }
