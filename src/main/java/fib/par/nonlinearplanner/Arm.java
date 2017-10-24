@@ -3,13 +3,22 @@ package fib.par.nonlinearplanner;
 public class Arm {
     final String name;
 
-    public static Arm leftArm = new Arm("Left");
-    public static Arm rightArm = new Arm("Right");
+    public static Arm leftArm = new Arm("L");
+    public static Arm rightArm = new Arm("R");
 
     public Arm(String name) {
         this.name = name;
     }
 
+    public static Arm fromString(String string) {
+        if(string.equals("R")) {
+            return rightArm;
+        } else if(string.equals("L")) {
+            return leftArm;
+        } else {
+            throw new IllegalArgumentException("Arm with name " + string + " not found.");
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

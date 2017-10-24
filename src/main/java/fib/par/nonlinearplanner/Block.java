@@ -29,6 +29,10 @@ public class Block {
 
     @Override
     public String toString() {
-        return name;
+        String string = name;
+        for(int i=0; i< weight; i++) {
+            string+= "*";
+        }
+        return string;
     }
 }
