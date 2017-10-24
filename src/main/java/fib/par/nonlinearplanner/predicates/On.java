@@ -48,4 +48,8 @@ public class On extends Predicate {
     public String toString() {
         return "On("+upperBlock.name+","+lowerBlock.name+")";
     }
+
+    public Block getUpperBlock() {
+        return upperBlock;
+    }
 }

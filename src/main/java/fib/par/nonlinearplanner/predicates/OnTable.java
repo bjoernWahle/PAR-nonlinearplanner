@@ -41,4 +41,8 @@ public class OnTable extends Predicate {
     public int hashCode() {
         return block != null ? block.hashCode() : 0;
     }
+
+    public Block getBlock() {
+        return block;
+    }
 }

@@ -42,4 +42,8 @@ public class EmptyArm extends Predicate {
     public String toString() {
         return "EmptyArm("+arm+")";
     }
+
+    public Arm getArm() {
+        return arm;
+    }
 }

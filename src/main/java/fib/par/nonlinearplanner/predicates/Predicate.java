@@ -11,8 +11,9 @@ public abstract class Predicate {
             return OnTable.fromString(string);
         } else if (string.startsWith("ON(")){
             return On.fromString(string);
+        } else if (string.startsWith("HOLDING(")) {
+            return Holding.fromString(string);
         }
         return null;
     }
-
 }
