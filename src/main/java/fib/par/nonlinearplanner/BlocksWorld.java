@@ -3,6 +3,11 @@ package fib.par.nonlinearplanner;
 import fib.par.nonlinearplanner.predicates.*;
 import fib.par.nonlinearplanner.util.Tree;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +54,16 @@ public class BlocksWorld {
 
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
-        Planner myPlanner = parser.readInputFile("input");
+
+        URL resource = BlocksWorld.class.getResource("/input");
+        File file = null;
+        try {
+            file = Paths.get(resource.toURI()).toFile();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        Planner myPlanner = parser.readInputFile(file);
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
         EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
         System.out.println(emptyArm.getPreOperators());
