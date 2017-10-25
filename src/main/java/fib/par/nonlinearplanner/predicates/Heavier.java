@@ -44,6 +44,7 @@ public class Heavier extends Predicate {
 
     @Override
     public Set<Operator> getPreOperators() {
+
         return new HashSet<Operator>();
     }
 }

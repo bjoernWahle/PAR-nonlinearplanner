@@ -2,22 +2,27 @@ package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.predicates.*;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 class BlocksWorldInputParser {
 
-    Planner readInputFile(String path) {
+    Planner readInputFile(File file) {
         try {
-            String absolutePath = BlocksWorld.class.getClassLoader().getResource(path).getPath();
-            List<String> inputStrings = Files.readAllLines(FileSystems.getDefault().getPath(absolutePath.split("C:")[1]), StandardCharsets.UTF_8);
-            String columnsString = inputStrings.get(0);
-            String blocksString = inputStrings.get(1);
-            String initialStateString = inputStrings.get(2);
-            String goalStateString = inputStrings.get(3);
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String columnsString = br.readLine();
+            String blocksString = br.readLine();
+            String initialStateString = br.readLine();
+            String goalStateString = br.readLine();
 
             // extract max column number
             String maxColumns = columnsString.split("MaxColumns=")[1];
