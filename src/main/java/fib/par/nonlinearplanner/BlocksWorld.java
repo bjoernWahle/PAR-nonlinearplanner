@@ -1,6 +1,7 @@
 package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.predicates.*;
+import fib.par.nonlinearplanner.util.Tree;
 
 import java.util.HashSet;
 import java.util.List;
@@ -52,6 +53,8 @@ public class BlocksWorld {
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
         EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
         System.out.println(emptyArm.getPreOperators());
+        Tree<State> stateTree = Planner.buildStateTree(0, 3, myPlanner.finalState);
+        int x = 4;
     }
 
     public static List<Block> getBlocksList() {

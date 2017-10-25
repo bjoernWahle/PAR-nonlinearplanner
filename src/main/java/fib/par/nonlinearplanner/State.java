@@ -69,6 +69,15 @@ public class State {
         return newState;
     }
 
+    public State applyOperatorReverse(Operator operator) {
+        Set<Predicate> newPredicateSet = new HashSet<Predicate>();
+        newPredicateSet.addAll(predicateSet);
+        State stateBefore = new State(newPredicateSet);
+        stateBefore.predicateSet.addAll(operator.deleteList);
+        stateBefore.predicateSet.removeAll(operator.addList);
+        return stateBefore;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
