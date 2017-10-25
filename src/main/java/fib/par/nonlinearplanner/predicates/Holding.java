@@ -2,14 +2,34 @@ package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Arm;
 import fib.par.nonlinearplanner.Block;
+import fib.par.nonlinearplanner.BlocksWorld;
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Holding extends Predicate {
     final Block block;
     final Arm arm;
 
+    private static String INPUT_NAME = "HOLDING";
+
     public Holding(Block block, Arm arm) {
         this.block = block;
         this.arm = arm;
+    }
+
+    public static Holding fromString(String string) {
+        if(!string.startsWith(INPUT_NAME+"(")) {
+            throw new IllegalArgumentException("Does not start with "+INPUT_NAME+"(");
+        }
+        String paramsNames = string.split(INPUT_NAME+"\\(")[1];
+        paramsNames = paramsNames.substring(0, paramsNames.length()-1);
+        String blockName = paramsNames.split(",")[0];
+        String armName = paramsNames.split(",")[1];
+        Holding holding = new Holding(BlocksWorld.getBlockFromName(blockName),Arm.fromString(armName));
+
+        return holding;
     }
 
     @Override
@@ -33,5 +53,19 @@ public class Holding extends Predicate {
         int result = block != null ? block.hashCode() : 0;
         result = 31 * result + (arm != null ? arm.hashCode() : 0);
         return result;
+    }
+
+    public Arm getArm() {
+        return arm;
+    }
+
+    public Block getBlock() {
+        return block;
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        // TODO implement
+        return new HashSet<Operator>();
     }
 }

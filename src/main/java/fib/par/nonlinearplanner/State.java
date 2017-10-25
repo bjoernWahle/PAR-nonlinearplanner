@@ -2,13 +2,14 @@ package fib.par.nonlinearplanner;
 
 import com.sun.org.apache.xpath.internal.operations.Neg;
 import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.predicates.Heavier;
-import fib.par.nonlinearplanner.predicates.LightBlock;
-import fib.par.nonlinearplanner.predicates.Negation;
-import fib.par.nonlinearplanner.predicates.Predicate;
+import fib.par.nonlinearplanner.predicates.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static fib.par.nonlinearplanner.BlocksWorld.blocksList;
 
 public class State {
     final Set<Predicate> predicateSet;
@@ -83,7 +84,7 @@ public class State {
         return predicateSet != null ? predicateSet.hashCode() : 0;
     }
 
-    public String simpleRepresentation() {
+    String simpleRepresentation() {
         String str = "";
         str += "State: ";
         str += "(Predicates: ";
@@ -95,5 +96,63 @@ public class State {
         str = str.substring(0, str.length()-1);
         str += ")";
         return str;
+    }
+
+    Set<Operator> getPossiblePreOperators() {
+        Set<Operator> operators = new HashSet<Operator>();
+        for(Predicate predicate : predicateSet) {
+            operators.addAll(predicate.getPreOperators());
+        }
+        return operators;
+    }
+
+    boolean isValid() {
+        boolean isValid = true;
+        // check empty-arm and holding
+        isValid = armsPredicatesValid();
+        if(!isValid) {
+            return false;
+        }
+        isValid = holdingPredicatesValid();
+        if(!isValid) {
+            return false;
+        }
+        isValid = onTablePredicatesValid();
+
+        return isValid;
+    }
+
+    private boolean onTablePredicatesValid() {
+        // if a block is on the table, it can be on another block or being held
+        Set<Block> onTableBlocks = predicateSet.stream().filter(p -> p instanceof OnTable).map(p -> ((OnTable)p).getBlock()).collect(Collectors.toSet());
+        Set<Block> notOnTableBlocks = new HashSet<Block>();
+        notOnTableBlocks.addAll(predicateSet.stream().filter(p -> p instanceof On).map(p -> ((On)p).getUpperBlock()).collect(Collectors.toSet()));
+        notOnTableBlocks.addAll(predicateSet.stream().filter(p -> p instanceof Holding).map(p -> ((Holding)p).getBlock()).collect(Collectors.toSet()));
+        onTableBlocks.retainAll(notOnTableBlocks);
+        return onTableBlocks.size() == 0;
+    }
+
+    private boolean holdingPredicatesValid() {
+        Set<Holding> holdings = predicateSet.stream().filter(p -> p instanceof Holding).map(p -> (Holding) p).collect(Collectors.toSet());
+        for(Holding holding : holdings) {
+            if(holding.getArm().equals(Arm.leftArm)) {
+                if(holding.getBlock().weight > 1) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean armsPredicatesValid() {
+        Set<Arm> emptyArms = predicateSet.stream().filter(p -> p instanceof EmptyArm).map(p -> ((EmptyArm) p).getArm()).collect(Collectors.toSet());
+        Set<Arm> holdingArms = predicateSet.stream().filter(p -> p instanceof Holding).map(p -> ((Holding) p).getArm()).collect(Collectors.toSet());
+        if(emptyArms.size() + holdingArms.size() > 2) {
+            return false;
+        };
+        // emptyArms contains the intersection of the arms after retainAll
+        emptyArms.retainAll(holdingArms);
+        // if intersection has elements it means that there is at least one arm that is also holding a block
+        return emptyArms.size() == 0;
     }
 }

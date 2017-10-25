@@ -1,6 +1,10 @@
 package fib.par.nonlinearplanner.predicates;
 
 import fib.par.nonlinearplanner.Block;
+import fib.par.nonlinearplanner.operators.Operator;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class LightBlock extends Predicate {
     final Block block;
@@ -28,5 +32,10 @@ public class LightBlock extends Predicate {
     @Override
     public String toString() {
         return "LightBlock("+block.name+")";
+    }
+
+    @Override
+    public Set<Operator> getPreOperators() {
+        return new HashSet<Operator>();
     }
 }

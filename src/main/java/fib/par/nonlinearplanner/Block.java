@@ -29,6 +29,14 @@ public class Block {
 
     @Override
     public String toString() {
+        String string = name;
+        for(int i=0; i< weight; i++) {
+            string+= "*";
+        }
+        return string;
+    }
+
+    public String simpleRepresentation() {
         return name;
     }
 }
