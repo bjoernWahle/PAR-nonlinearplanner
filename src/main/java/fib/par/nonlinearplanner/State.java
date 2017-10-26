@@ -110,25 +110,39 @@ public class State {
     Set<Operator> getPossiblePreOperators() {
         Set<Operator> operators = new HashSet<Operator>();
         for(Predicate predicate : predicateSet) {
-            operators.addAll(predicate.getPreOperators());
+            Set<Operator> preOps = predicate.getPreOperators();
+            operators.addAll(preOps);
         }
         return operators;
     }
 
     boolean isValid() {
-        boolean isValid = true;
+        // check used-columns-num
+        if(!usedColumnsNumValid()) {
+            return false;
+        }
         // check empty-arm and holding
-        isValid = armsPredicatesValid();
-        if(!isValid) {
+        if(!armsPredicatesValid()) {
             return false;
         }
-        isValid = holdingPredicatesValid();
-        if(!isValid) {
+        if(!holdingPredicatesValid()) {
             return false;
         }
-        isValid = onTablePredicatesValid();
+        // check onTable valid
+        if(!onTablePredicatesValid()) {
+            return false;
+        }
+        return true;
+    }
 
-        return isValid;
+    private boolean usedColumnsNumValid() {
+        Set<UsedColumnsNum> usedColumnsNumSet = predicateSet.stream().filter(p -> p instanceof UsedColumnsNum)
+                .map(p -> (UsedColumnsNum)p).collect(Collectors.toSet());
+        if(usedColumnsNumSet.size()>1) {
+            return false;
+        }
+        // TODO implement on table behaviour
+        return true;
     }
 
     private boolean onTablePredicatesValid() {

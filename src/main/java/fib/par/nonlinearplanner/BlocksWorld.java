@@ -1,7 +1,7 @@
 package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.predicates.*;
-import fib.par.nonlinearplanner.util.Tree;
+import fib.par.nonlinearplanner.util.StateOperatorTree;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -54,8 +54,7 @@ public class BlocksWorld {
 
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
-
-        URL resource = BlocksWorld.class.getResource("/input");
+        URL resource = BlocksWorld.class.getResource("/simple");
         File file = null;
         try {
             file = Paths.get(resource.toURI()).toFile();
@@ -65,9 +64,7 @@ public class BlocksWorld {
 
         Planner myPlanner = parser.readInputFile(file);
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
-        EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
-        System.out.println(emptyArm.getPreOperators());
-        Tree<State> stateTree = Planner.buildStateTree(0, 3, myPlanner.finalState);
+        StateOperatorTree stateTree = Planner.buildStateTree(0, 2,myPlanner.initialState, myPlanner.finalState);
         int x = 4;
     }
 

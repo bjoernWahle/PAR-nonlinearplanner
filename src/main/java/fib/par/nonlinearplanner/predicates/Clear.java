@@ -7,6 +7,7 @@ import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.operators.RightArmUnstack;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -50,7 +51,7 @@ public class Clear extends Predicate {
     @Override
     public Set<Operator> getPreOperators() {
         Set<Operator> preOperators = new HashSet<Operator>();
-        List<Block> otherBlocks = BlocksWorld.getBlocksList();
+        List<Block> otherBlocks = new LinkedList<Block>(BlocksWorld.getBlocksList());
         otherBlocks.remove(block);
         for(Block otherBlock : otherBlocks) {
             if(otherBlock.weight == 1) {

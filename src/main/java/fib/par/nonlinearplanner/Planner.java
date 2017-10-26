@@ -1,8 +1,10 @@
 package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.util.Tree;
+import fib.par.nonlinearplanner.predicates.Predicate;
+import fib.par.nonlinearplanner.util.StateOperatorTree;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -34,23 +36,43 @@ public class Planner {
     }
 
     public Plan findBestPlanWithRegression() {
-        Tree<State> stateTree = buildStateTree(0, 2, finalState);
+        StateOperatorTree stateTree = buildStateTree(0, 5, initialState, finalState);
         //Plan plan = binarySearch(regressionLevelTree, initialState);
         return null;
     }
 
-    public static Tree<State> buildStateTree(int currentLevel, int maxLevel, State finalState) {
-        Tree<State> tree = new Tree<State>(finalState);
-        if(currentLevel == maxLevel || !finalState.isValid()) {
+    public static StateOperatorTree buildStateTree(int currentLevel, int maxLevel, State initialState, State finalState) {
+        StateOperatorTree tree = new StateOperatorTree(finalState, null);
+        if(currentLevel == maxLevel || !finalState.isValid() || initialState.equals(finalState)) {
+            if(initialState.equals(finalState)) {
+                System.out.println("Initial state found!!");
+            }
             return tree;
         }
         Set<Operator> operatorSet = finalState.getPossiblePreOperators();
         for(Operator operator : operatorSet) {
-            Tree.Node<State> child = buildStateTree(currentLevel+1, maxLevel, finalState.applyOperatorReverse(operator)).getRoot();
-            if(child.getData().isValid()) {
+            boolean operatorPossible = true;
+            // check if the regression function returns true for all predicates in final state
+            for(Predicate predicate : finalState.predicateSet) {
+                if(!regression(operator, predicate)) {
+                    operatorPossible = false;
+                    break;
+                }
+            }
+            // if not, continue with next operator
+            if(!operatorPossible) {
+                continue;
+            }
+            StateOperatorTree.Node child = buildStateTree(currentLevel+1, maxLevel, initialState, finalState.applyOperatorReverse(operator)).getRoot();
+            child.setOperator(operator);
+            if(child.getState().isValid()) {
                 tree.getRoot().addChild(child);
             }
         }
         return tree;
+    }
+
+    private static boolean regression(Operator o, Predicate p) {
+        return !o.deleteList.contains(p);
     }
 }

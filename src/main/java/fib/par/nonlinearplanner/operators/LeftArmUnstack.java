@@ -26,4 +26,9 @@ public class LeftArmUnstack extends Operator {
         deleteList.add(new On(blockToUnstack, lowerBlock));
         deleteList.add(new EmptyArm(Arm.leftArm));
     }
+
+    @Override
+    public String toString() {
+        return "LeftArmUnstack("+blockToUnstack.simpleRepresentation()+","+lowerBlock.simpleRepresentation()+")";
+    }
 }
