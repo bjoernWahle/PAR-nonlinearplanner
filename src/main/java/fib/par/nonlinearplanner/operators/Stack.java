@@ -14,10 +14,12 @@ public class Stack extends Operator {
         this.lowerBlock = lowerBlock;
         this.arm = arm;
 
+        Arm otherArm = arm.equals(Arm.leftArm) ? Arm.rightArm : Arm.leftArm;
         // preconditions
         preconditions.add(new Holding(blockToStack, arm));
         preconditions.add(new Clear(lowerBlock));
         preconditions.add(new Heavier(lowerBlock, blockToStack));
+        preconditions.add(new Negation(new Holding(lowerBlock, otherArm)));
 
         // add list
         addList.add(new On(blockToStack, lowerBlock));

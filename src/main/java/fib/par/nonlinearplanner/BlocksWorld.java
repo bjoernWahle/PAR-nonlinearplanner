@@ -55,7 +55,9 @@ public class BlocksWorld {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
 
-        URL resource = BlocksWorld.class.getResource("/input");
+        URL resource = BlocksWorld.class.getResource("/simple1");
+        //URL resource = BlocksWorld.class.getResource("/simple1");
+
         File file = null;
         try {
             file = Paths.get(resource.toURI()).toFile();
@@ -65,10 +67,9 @@ public class BlocksWorld {
 
         Planner myPlanner = parser.readInputFile(file);
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
-        StateOperatorTree stateTree = Planner.buildStateTree(0, 2,myPlanner.initialState, myPlanner.finalState);
-        int x = 4;
-
-
+        Plan plan = myPlanner.findBestPlanWithRegression(5);
+        System.out.println(plan.operators);
+        myPlanner.executePlan(plan);
     }
 
     public static List<Block> getBlocksList() {

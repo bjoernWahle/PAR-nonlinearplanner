@@ -4,6 +4,7 @@ import fib.par.nonlinearplanner.State;
 import fib.par.nonlinearplanner.operators.Operator;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class StateOperatorTree {
@@ -20,10 +21,28 @@ public class StateOperatorTree {
         root = new Node(state);
     }
 
+    public List<Node> getNodesInLevel(int i) {
+        List<Node> nodeList = new LinkedList<Node>();
+        if(i == 0) {
+            nodeList.add(root);
+        } else {
+            List<Node> parentNodeList = getNodesInLevel(i -1);
+            for(Node node : parentNodeList) {
+                nodeList.addAll(node.children);
+            }
+        }
+        return nodeList;
+    }
+
     public static class Node {
         private State state;
         private Operator operator;
         private List<Node> children;
+        private Node parent;
+
+        public boolean isRoot() {
+            return parent == null;
+        }
 
         public Node(State state, Operator operator) {
             this.state = state;
@@ -37,6 +56,7 @@ public class StateOperatorTree {
         }
 
         public void addChild(Node child) {
+            child.parent = this;
             this.children.add(child);
         }
 
@@ -54,6 +74,10 @@ public class StateOperatorTree {
 
         public void setOperator(Operator operator) {
             this.operator = operator;
+        }
+
+        public Node getParent() {
+            return parent;
         }
     }
 }

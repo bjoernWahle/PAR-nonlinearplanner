@@ -58,7 +58,6 @@ public class EmptyArm extends Predicate {
     @Override
     public Set<Operator> getPreOperators() {
         Set<Operator> preOperators = new HashSet<Operator>();
-        System.out.println(BlocksWorld.MAX_COLUMNS);
         for(Block block : BlocksWorld.getBlocksList()) {
             if(arm.equals(Arm.leftArm)) {
                 if(block.weight > 1) {
