@@ -12,6 +12,7 @@ public class Stack extends Operator {
     public Stack(Block blockToStack, Block lowerBlock, Arm arm) {
         this.blockToStack = blockToStack;
         this.lowerBlock = lowerBlock;
+        this.arm = arm;
 
         // preconditions
         preconditions.add(new Holding(blockToStack, arm));
@@ -25,5 +26,10 @@ public class Stack extends Operator {
         // delete list
         deleteList.add(new Clear(lowerBlock));
         deleteList.add(new Holding(blockToStack, arm));
+    }
+
+    @Override
+    public String toString() {
+        return "Stack("+blockToStack.simpleRepresentation()+","+lowerBlock.simpleRepresentation()+","+arm +")";
     }
 }

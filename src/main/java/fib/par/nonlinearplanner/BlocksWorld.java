@@ -1,6 +1,7 @@
 package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.predicates.*;
+import fib.par.nonlinearplanner.util.StateOperatorTree;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -63,12 +64,9 @@ public class BlocksWorld {
         }
 
         Planner myPlanner = parser.readInputFile(file);
-        //System.out.println(myPlanner.finalState.getPossiblePreOperators());
-        //EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
-        //System.out.println(emptyArm.getPreOperators());
-        Holding holding = new Holding(BlocksWorld.getBlockFromName("B"), Arm.rightArm);
-        System.out.println("Holding PreOperators: "+holding.getPreOperators());
-        On on = new On(BlocksWorld.getBlockFromName("A"), BlocksWorld.getBlockFromName("B"));
+        System.out.println(myPlanner.finalState.getPossiblePreOperators());
+        StateOperatorTree stateTree = Planner.buildStateTree(0, 2,myPlanner.initialState, myPlanner.finalState);
+        int x = 4;
     }
 
     public static List<Block> getBlocksList() {

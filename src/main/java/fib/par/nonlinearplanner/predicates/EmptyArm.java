@@ -67,6 +67,12 @@ public class EmptyArm extends Predicate {
             for(int i = 0; i < BlocksWorld.MAX_COLUMNS; i++) {
                 preOperators.add(new Leave(block, arm, i));
             }
+            for(Block otherBlock : BlocksWorld.getBlocksList()) {
+                if(otherBlock.equals(block)) {
+                    continue;
+                }
+                preOperators.add(new Stack(block, otherBlock, arm));
+            }
 
             // TODO add Stack() operators
         }

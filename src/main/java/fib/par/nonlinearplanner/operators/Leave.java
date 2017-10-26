@@ -8,10 +8,12 @@ import fib.par.nonlinearplanner.predicates.*;
 public class Leave extends Operator {
     public Block blockToLeave;
     public Arm arm;
+    public int usedColsBefore;
 
     public Leave(Block blockToLeave, Arm arm, int usedColsBefore) {
         this.blockToLeave = blockToLeave;
         this.arm = arm;
+        this.usedColsBefore = usedColsBefore;
 
         // preconditions
         preconditions.add(new Holding(blockToLeave, arm));
