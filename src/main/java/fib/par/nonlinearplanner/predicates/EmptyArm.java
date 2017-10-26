@@ -5,6 +5,7 @@ import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
 import fib.par.nonlinearplanner.operators.Leave;
 import fib.par.nonlinearplanner.operators.Operator;
+import fib.par.nonlinearplanner.operators.Stack;
 
 import java.util.HashSet;
 import java.util.List;
@@ -74,7 +75,6 @@ public class EmptyArm extends Predicate {
                 preOperators.add(new Stack(block, otherBlock, arm));
             }
 
-            // TODO add Stack() operators
         }
         return preOperators;
     }

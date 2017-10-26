@@ -31,7 +31,5 @@ public class LeftArmUnstack extends Operator {
     public String toString() {
         return "LeftArmUnstack("+blockToUnstack.simpleRepresentation()+","+lowerBlock.simpleRepresentation()+")";
     }
-    public String toString() {
-        return "Unstack("+blockToUnstack.simpleRepresentation() +","+lowerBlock.simpleRepresentation()+")";
-    }
+
 }

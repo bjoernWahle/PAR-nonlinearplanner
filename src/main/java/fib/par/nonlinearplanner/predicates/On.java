@@ -61,13 +61,11 @@ public class On extends Predicate {
 
     @Override
     public Set<Operator> getPreOperators() {
-        // TODO implement: stack(upperblock, lowerblock)
         Set<Operator> preOperators = new HashSet<Operator>();
         if(upperBlock.weight == 1){
             preOperators.add(new Stack(upperBlock, lowerBlock, Arm.leftArm));
         }
-
-
+        preOperators.add(new Stack(upperBlock, lowerBlock, Arm.rightArm));
         return preOperators;
     }
 }

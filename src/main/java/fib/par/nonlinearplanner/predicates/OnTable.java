@@ -1,7 +1,9 @@
 package fib.par.nonlinearplanner.predicates;
 
+import fib.par.nonlinearplanner.Arm;
 import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
+import fib.par.nonlinearplanner.operators.Leave;
 import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.Predicate;
 
@@ -52,7 +54,13 @@ public class OnTable extends Predicate {
 
     @Override
     public Set<Operator> getPreOperators() {
-        // TODO implement
-        return new HashSet<Operator>();
+        Set<Operator> preOperators = new HashSet<Operator>();
+        for(int i = 0; i < BlocksWorld.MAX_COLUMNS; i++) {
+            if(block.weight == 1) {
+                preOperators.add(new Leave(block, Arm.leftArm, i));
+            }
+            preOperators.add(new Leave(block, Arm.rightArm, i));
+        }
+        return preOperators;
     }
 }

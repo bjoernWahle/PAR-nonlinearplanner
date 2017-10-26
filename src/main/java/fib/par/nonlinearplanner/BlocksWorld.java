@@ -67,6 +67,8 @@ public class BlocksWorld {
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
         StateOperatorTree stateTree = Planner.buildStateTree(0, 2,myPlanner.initialState, myPlanner.finalState);
         int x = 4;
+
+
     }
 
     public static List<Block> getBlocksList() {
