@@ -21,21 +21,21 @@ public class Holding extends Predicate {
     }
 
     public static Holding fromString(String string) {
-        if(!string.startsWith(INPUT_NAME+"(")) {
-            throw new IllegalArgumentException("Does not start with "+INPUT_NAME+"(");
+        if (!string.startsWith(INPUT_NAME + "(")) {
+            throw new IllegalArgumentException("Does not start with " + INPUT_NAME + "(");
         }
-        String paramsNames = string.split(INPUT_NAME+"\\(")[1];
-        paramsNames = paramsNames.substring(0, paramsNames.length()-1);
+        String paramsNames = string.split(INPUT_NAME + "\\(")[1];
+        paramsNames = paramsNames.substring(0, paramsNames.length() - 1);
         String blockName = paramsNames.split(",")[0];
         String armName = paramsNames.split(",")[1];
-        Holding holding = new Holding(BlocksWorld.getBlockFromName(blockName),Arm.fromString(armName));
+        Holding holding = new Holding(BlocksWorld.getBlockFromName(blockName), Arm.fromString(armName));
 
         return holding;
     }
 
     @Override
     public String toString() {
-        return "Holding("+block+","+arm+")";
+        return "Holding(" + block + "," + arm + ")";
     }
 
     @Override
@@ -69,14 +69,15 @@ public class Holding extends Predicate {
         Set<Operator> preOperators = new HashSet<Operator>();
         List<Block> otherBlocks = BlocksWorld.getBlocksList();
         otherBlocks.remove(block);
-        for(Block otherBlock : otherBlocks) {
-            if(otherBlock.weight == 1) {
-                preOperators.add(new LeftArmUnstack(otherBlock, block));
+        for (Block otherBlock : otherBlocks) {
+            if (block.weight == 1) {
+                preOperators.add(new LeftArmUnstack(block, otherBlock));
             }
-            preOperators.add(new RightArmUnstack(otherBlock,block));
+            preOperators.add(new RightArmUnstack(block, otherBlock));
         }
-        for (int i= 1; i < BlocksWorld.MAX_COLUMNS; i++){
-            if(block.weight == 1){
+
+        for (int i = 1; i < BlocksWorld.MAX_COLUMNS; i++) {
+            if (block.weight == 1) {
                 preOperators.add(new LeftArmPickUp(block, i));
             }
             preOperators.add(new RightArmPickUp(block, i));

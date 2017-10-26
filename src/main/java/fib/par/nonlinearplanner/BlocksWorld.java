@@ -63,9 +63,12 @@ public class BlocksWorld {
         }
 
         Planner myPlanner = parser.readInputFile(file);
-        System.out.println(myPlanner.finalState.getPossiblePreOperators());
-        EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
-        System.out.println(emptyArm.getPreOperators());
+        //System.out.println(myPlanner.finalState.getPossiblePreOperators());
+        //EmptyArm emptyArm = new EmptyArm(Arm.leftArm);
+        //System.out.println(emptyArm.getPreOperators());
+        Holding holding = new Holding(BlocksWorld.getBlockFromName("B"), Arm.rightArm);
+        System.out.println("Holding PreOperators: "+holding.getPreOperators());
+        On on = new On(BlocksWorld.getBlockFromName("A"), BlocksWorld.getBlockFromName("B"));
     }
 
     public static List<Block> getBlocksList() {

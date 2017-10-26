@@ -20,4 +20,7 @@ public class RightArmPickUp extends Operator {
         deleteList.add(new EmptyArm(Arm.rightArm));
         deleteList.add(new UsedColumnsNum(usedColsBefore));
     }
+    public String toString() {
+        return "RightArmPickUp("+blockToPickUp.simpleRepresentation()+")";
+    }
 }

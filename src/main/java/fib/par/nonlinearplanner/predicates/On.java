@@ -1,8 +1,10 @@
 package fib.par.nonlinearplanner.predicates;
 
+import fib.par.nonlinearplanner.Arm;
 import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
 import fib.par.nonlinearplanner.operators.Operator;
+import fib.par.nonlinearplanner.operators.Stack;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -59,7 +61,13 @@ public class On extends Predicate {
 
     @Override
     public Set<Operator> getPreOperators() {
-        // TODO implement
-        return new HashSet<Operator>();
+        // TODO implement: stack(upperblock, lowerblock)
+        Set<Operator> preOperators = new HashSet<Operator>();
+        if(upperBlock.weight == 1){
+            preOperators.add(new Stack(upperBlock, lowerBlock, Arm.leftArm));
+        }
+
+
+        return preOperators;
     }
 }

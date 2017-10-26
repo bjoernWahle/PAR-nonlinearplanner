@@ -25,6 +25,6 @@ public class LeftArmPickUp extends Operator {
 
     @Override
     public String toString() {
-        return "LeftArmPickUp("+blockToPickUp +")";
+        return "LeftArmPickUp("+blockToPickUp.simpleRepresentation() +")";
     }
 }
