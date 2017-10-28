@@ -10,6 +10,26 @@ public class Leave extends Operator {
     public Arm arm;
     public int usedColsBefore;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Leave leave = (Leave) o;
+
+        if (usedColsBefore != leave.usedColsBefore) return false;
+        if (blockToLeave != null ? !blockToLeave.equals(leave.blockToLeave) : leave.blockToLeave != null) return false;
+        return arm != null ? arm.equals(leave.arm) : leave.arm == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = blockToLeave != null ? blockToLeave.hashCode() : 0;
+        result = 31 * result + (arm != null ? arm.hashCode() : 0);
+        result = 31 * result + usedColsBefore;
+        return result;
+    }
+
     public Leave(Block blockToLeave, Arm arm, int usedColsBefore) {
         this.blockToLeave = blockToLeave;
         this.arm = arm;

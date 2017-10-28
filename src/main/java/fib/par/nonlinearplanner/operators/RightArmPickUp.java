@@ -6,6 +6,22 @@ import fib.par.nonlinearplanner.predicates.*;
 public class RightArmPickUp extends Operator {
     Block blockToPickUp;
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RightArmPickUp that = (RightArmPickUp) o;
+
+        return blockToPickUp != null ? blockToPickUp.equals(that.blockToPickUp) : that.blockToPickUp == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return blockToPickUp != null ? blockToPickUp.hashCode() : 0;
+    }
+
     public RightArmPickUp(Block blockToPickUp, int usedColsBefore) {
         super();
         this.blockToPickUp = blockToPickUp;

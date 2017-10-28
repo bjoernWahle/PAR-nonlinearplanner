@@ -8,6 +8,25 @@ public class LeftArmUnstack extends Operator {
     public Block blockToUnstack;
     public Block lowerBlock;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LeftArmUnstack that = (LeftArmUnstack) o;
+
+        if (blockToUnstack != null ? !blockToUnstack.equals(that.blockToUnstack) : that.blockToUnstack != null)
+            return false;
+        return lowerBlock != null ? lowerBlock.equals(that.lowerBlock) : that.lowerBlock == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = blockToUnstack != null ? blockToUnstack.hashCode() : 0;
+        result = 31 * result + (lowerBlock != null ? lowerBlock.hashCode() : 0);
+        return result;
+    }
+
     public LeftArmUnstack(Block blockToUnstack, Block lowerBlock) {
         this.blockToUnstack = blockToUnstack;
         this.lowerBlock = lowerBlock;
@@ -17,6 +36,7 @@ public class LeftArmUnstack extends Operator {
         preconditions.add(new EmptyArm(Arm.leftArm));
         preconditions.add(new On(blockToUnstack, lowerBlock));
         preconditions.add(new Clear(blockToUnstack));
+
 
         // add list
         addList.add(new Holding(blockToUnstack, Arm.leftArm));

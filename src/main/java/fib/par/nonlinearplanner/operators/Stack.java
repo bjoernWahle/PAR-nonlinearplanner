@@ -31,6 +31,26 @@ public class Stack extends Operator {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Stack stack = (Stack) o;
+
+        if (blockToStack != null ? !blockToStack.equals(stack.blockToStack) : stack.blockToStack != null) return false;
+        if (lowerBlock != null ? !lowerBlock.equals(stack.lowerBlock) : stack.lowerBlock != null) return false;
+        return arm != null ? arm.equals(stack.arm) : stack.arm == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = blockToStack != null ? blockToStack.hashCode() : 0;
+        result = 31 * result + (lowerBlock != null ? lowerBlock.hashCode() : 0);
+        result = 31 * result + (arm != null ? arm.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Stack("+blockToStack.simpleRepresentation()+","+lowerBlock.simpleRepresentation()+","+arm +")";
     }

@@ -38,6 +38,5 @@ public class ClearTest {
         Set<Operator> expectedOperators = new HashSet<Operator>();
         expectedOperators.add(new RightArmUnstack(b, a));
         assertEquals(operatorSet, expectedOperators);
-
     }
 }
