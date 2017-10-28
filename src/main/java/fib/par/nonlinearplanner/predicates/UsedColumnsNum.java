@@ -6,6 +6,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UsedColumnsNum extends Predicate {
+    public int getUsedColumns() {
+        return usedColumns;
+    }
+
     int usedColumns;
 
     public UsedColumnsNum(int usedColumns) {

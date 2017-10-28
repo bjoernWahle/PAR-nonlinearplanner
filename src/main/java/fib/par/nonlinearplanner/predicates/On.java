@@ -59,6 +59,10 @@ public class On extends Predicate {
         return upperBlock;
     }
 
+    public Block getLowerBlock() {
+        return lowerBlock;
+    }
+
     @Override
     public Set<Operator> getPreOperators() {
         Set<Operator> preOperators = new HashSet<Operator>();

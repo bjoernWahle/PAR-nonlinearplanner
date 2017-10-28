@@ -36,7 +36,7 @@ public class Holding extends Predicate {
 
     @Override
     public String toString() {
-        return "Holding(" + block + "," + arm + ")";
+        return "Holding(" + block.simpleRepresentation() + "," + arm + ")";
     }
 
     @Override

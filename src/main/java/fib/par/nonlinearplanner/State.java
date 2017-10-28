@@ -131,16 +131,27 @@ public class State {
         if(!onTablePredicatesValid()) {
             return false;
         }
+        if(!onPredicatesValid()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean onPredicatesValid() {
+        Set<On> onPredicates = predicateSet.stream().filter(p -> p instanceof On)
+                .map(p -> (On)p).collect(Collectors.toSet());
+        // check that no block has two blocks on it
+        List<Block> lowerBlocks = onPredicates.stream().map(On::getLowerBlock).collect(Collectors.toList());
+        List<Block> upperBlocks = onPredicates.stream().map(On::getUpperBlock).collect(Collectors.toList());
         return true;
     }
 
     private boolean usedColumnsNumValid() {
-        Set<UsedColumnsNum> usedColumnsNumSet = predicateSet.stream().filter(p -> p instanceof UsedColumnsNum)
-                .map(p -> (UsedColumnsNum)p).collect(Collectors.toSet());
-        if(usedColumnsNumSet.size()>1) {
+        List<UsedColumnsNum> usedColumnsNumSet = predicateSet.stream().filter(p -> p instanceof UsedColumnsNum)
+                .map(p -> (UsedColumnsNum)p).collect(Collectors.toList());
+        if(usedColumnsNumSet.size()>1 || usedColumnsNumSet.size() == 0) {
             return false;
         }
-        // TODO implement on table behaviour
         return true;
     }
 
@@ -156,11 +167,18 @@ public class State {
 
     private boolean holdingPredicatesValid() {
         Set<Holding> holdings = predicateSet.stream().filter(p -> p instanceof Holding).map(p -> (Holding) p).collect(Collectors.toSet());
+        Set<Block> onTableBlocks = predicateSet.stream().filter(p -> p instanceof OnTable).map(p -> ((OnTable)p).getBlock()).collect(Collectors.toSet());
+        Set<Block> lowerOnBlocks = predicateSet.stream().filter(p -> p instanceof On).map(p -> ((On)p).getLowerBlock()).collect(Collectors.toSet());
+        Set<Block> upperOnBlocks = predicateSet.stream().filter(p -> p instanceof On).map(p -> ((On)p).getUpperBlock()).collect(Collectors.toSet());
         for(Holding holding : holdings) {
+            Block block = holding.getBlock();
             if(holding.getArm().equals(Arm.leftArm)) {
-                if(holding.getBlock().weight > 1) {
+                if(block.weight > 1) {
                     return false;
                 }
+            }
+            if(onTableBlocks.contains(block) ||lowerOnBlocks.contains(block) || upperOnBlocks.contains(block)) {
+                return false;
             }
         }
         return true;

@@ -154,7 +154,7 @@ public class Planner {
                                 }
                             } else {
                                 // TODO add reason why branch was not continued
-                                System.out.println("Repeated state: " +childState);
+                                System.out.println("Repeated state: " +childState.simpleRepresentation());
                             }
                         }
                     }
