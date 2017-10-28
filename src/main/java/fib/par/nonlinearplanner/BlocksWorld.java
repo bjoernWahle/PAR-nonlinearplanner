@@ -67,9 +67,10 @@ public class BlocksWorld {
 
         Planner myPlanner = parser.readInputFile(file);
         Plan plan = myPlanner.findBestPlanWithRegression(30);
-        System.out.println(plan.operators);
         boolean validPlan = myPlanner.verifyPlan(myPlanner.bestPlan);
         System.out.println("Best plan is valid: "+validPlan);
+
+        System.out.println("Output: ");
         System.out.println(myPlanner.generateOutput());
     }
 

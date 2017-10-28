@@ -56,10 +56,12 @@ public class Planner {
         int opNum = 0;
         for(Operator operator: plan.operators) {
             System.out.println(opNum++ +":"+ currentState.simpleRepresentation());
+            currentState.printState();
             System.out.println("Applying operator "+ operator);
             currentState = operator.execute(currentState);
         }
         System.out.println(opNum + ":" + currentState.simpleRepresentation());
+        currentState.printState();
     }
 
     public boolean verifyPlan(Plan plan) {

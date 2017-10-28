@@ -4,11 +4,10 @@ import com.sun.org.apache.xpath.internal.operations.Neg;
 import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import static fib.par.nonlinearplanner.BlocksWorld.MAX_COLUMNS;
 import static fib.par.nonlinearplanner.BlocksWorld.blocksList;
 
 public class State {
@@ -194,5 +193,88 @@ public class State {
         emptyArms.retainAll(holdingArms);
         // if intersection has elements it means that there is at least one arm that is also holding a block
         return emptyArms.size() == 0;
+    }
+
+    public void printState() {
+        // print arms
+
+        Block leftHeldBlock = getBlockHeldByLeftArm();
+        String l = leftHeldBlock == null ? "_" : leftHeldBlock.simpleRepresentation();
+        Block rightHeldBlock = getBlockHeldByRightArm();
+        String r = rightHeldBlock == null? "_" : rightHeldBlock.simpleRepresentation();
+        System.out.println("|---L---|    |---R---|");
+        System.out.println("    "+l+"            "+r);
+        // print 2 empty lines
+        System.out.println("");
+        System.out.println("");
+
+        // get on-tables
+        List<Block> onTableBlocks = getOnTableBlocks();
+        // create array for the columns
+        List<List<Block>> columns = new LinkedList<List<Block>>();
+        for(Block onTableBlock : onTableBlocks) {
+            columns.add(getColumnOn(onTableBlock));
+        }
+        int maxHeight = columns.stream().max(Comparator.comparingInt(List::size)).get().size();
+        String gap = "    ";
+        for(int i = maxHeight-1; i >= 0; i--) {
+            String levelString = "";
+            for(List<Block> blocks : columns) {
+                if(blocks.size() > i) {
+                    levelString += blocks.get(i).simpleRepresentation();
+                } else {
+                    levelString += " ";
+                }
+                levelString += gap;
+            }
+            System.out.println(levelString);
+        }
+    }
+
+    private List<Block> getColumnOn(Block onTableBlock) {
+        List<Block> column = new LinkedList<Block>();
+        column.add(onTableBlock);
+        // search for On(x, onTableBlock)
+        Block currentBlock = onTableBlock;
+        Block nextBlock;
+        do {
+            nextBlock = findBlockOn(currentBlock);
+            if(nextBlock != null) {
+                currentBlock = nextBlock;
+                column.add(nextBlock);
+            }
+        } while (nextBlock != null);
+        return column;
+    }
+
+    private Block findBlockOn(Block onTableBlock) {
+        List<Block> upperOnBlocks = predicateSet.stream().filter(p -> p instanceof On && ((On) p).getLowerBlock() == onTableBlock).map(p -> ((On)p).getUpperBlock()).collect(Collectors.toList());
+        if(upperOnBlocks.size() == 0) {
+            return null;
+        } else {
+            return upperOnBlocks.get(0);
+        }
+    }
+
+    public Block getBlockHeldByLeftArm() {
+        List<Block> blocks = predicateSet.stream().filter(p -> (p instanceof Holding && (((Holding) p).getArm().equals(Arm.leftArm)))).map(h -> ((Holding) h).getBlock()).collect(Collectors.toList());
+        if(blocks.size() == 0) {
+            return null;
+        } else {
+            return blocks.get(0);
+        }
+    }
+
+    public Block getBlockHeldByRightArm() {
+        List<Block> blocks = predicateSet.stream().filter(p -> (p instanceof Holding && (((Holding) p).getArm().equals(Arm.rightArm)))).map(h -> ((Holding) h).getBlock()).collect(Collectors.toList());
+        if(blocks.size() == 0) {
+            return null;
+        } else {
+            return blocks.get(0);
+        }
+    }
+
+    public List<Block> getOnTableBlocks() {
+        return predicateSet.stream().filter(p -> p instanceof OnTable).map(p -> ((OnTable)p).getBlock()).collect(Collectors.toList());
     }
 }
