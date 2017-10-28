@@ -5,6 +5,7 @@ import fib.par.nonlinearplanner.predicates.*;
 
 public class LeftArmPickUp extends Operator {
     final Block blockToPickUp;
+    final int usedColsBefore;
 
     @Override
     public boolean equals(Object o) {
@@ -13,17 +14,21 @@ public class LeftArmPickUp extends Operator {
 
         LeftArmPickUp that = (LeftArmPickUp) o;
 
+        if (usedColsBefore != that.usedColsBefore) return false;
         return blockToPickUp != null ? blockToPickUp.equals(that.blockToPickUp) : that.blockToPickUp == null;
     }
 
     @Override
     public int hashCode() {
-        return blockToPickUp != null ? blockToPickUp.hashCode() : 0;
+        int result = blockToPickUp != null ? blockToPickUp.hashCode() : 0;
+        result = 31 * result + usedColsBefore;
+        return result;
     }
 
     public LeftArmPickUp(Block blockToPickUp, int usedColsBefore) {
         super();
         this.blockToPickUp = blockToPickUp;
+        this.usedColsBefore = usedColsBefore;
         // set preconditions
         preconditions.add(new OnTable(blockToPickUp));
         preconditions.add(new Clear(blockToPickUp));

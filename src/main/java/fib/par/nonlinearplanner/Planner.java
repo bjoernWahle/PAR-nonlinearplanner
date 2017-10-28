@@ -4,8 +4,10 @@ import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.Predicate;
 import fib.par.nonlinearplanner.util.StateOperatorTree;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Planner {
@@ -96,6 +98,9 @@ public class Planner {
         StateOperatorTree tree = new StateOperatorTree(finalState, null);
         boolean initialStateFound = false;
         StateOperatorTree.Node initialStateNode = null;
+        Set<State> states = new HashSet<State>();
+        // add final state to the list of already reached states
+        states.add(finalState);
         for(int i = 0; i < maxLevel; i++) {
             if(initialStateFound) {
                 break;
@@ -112,7 +117,8 @@ public class Planner {
                 // TODO think about if this could be implemented more efficient
                 // for each possible operator that could lead to the current state
                 // check if it could be applied using goal regression
-                for(Operator operator : state.getPossiblePreOperators()) {
+                Set<Operator> possiblePreOperators = state.getPossiblePreOperators();
+                for(Operator operator : possiblePreOperators) {
                     if(initialStateFound) {
                         break;
                     }
@@ -124,21 +130,31 @@ public class Planner {
                             break;
                         }
                     }
+                    if(operatorPossible) {
+                        if(!state.predicateSet.containsAll(operator.addList)) {
+                            operatorPossible = false;
+                        }
+                    }
                     // if operator possible, apply it reversely to the state to obtain its previous state
                     if(operatorPossible) {
                         State childState = state.applyOperatorReverse(operator);
                         // if the previous state is valid and the operators preconditions are met
                         // add it to the tree with the operator
                         if(childState.isValid() && operator.isExecutable(childState)) {
-                            StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator);
-                            node.addChild(child);
-                            // if the state is the initial state set initialStateFound to true to stop for loops
-                            if(childState.equals(initialState)) {
-                                initialStateFound = true;
-                                initialStateNode = child;
-                                System.out.println("Initial state found in level "+(i+1)+". Operator: "+ operator);
+                            if(!states.contains(childState)) {
+                                StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator);
+                                System.out.println("Level "+i+": Adding "+ operator + " to the tree");
+                                node.addChild(child);
+                                states.add(child.getState());
+                                // if the state is the initial state set initialStateFound to true to stop for loops
+                                if(childState.equals(initialState)) {
+                                    initialStateFound = true;
+                                    initialStateNode = child;
+                                    System.out.println("Initial state found in level "+(i+1)+". Operator: "+ operator);
+                                }
                             } else {
-                                System.out.println("Level: " +(i+1) +" Previous state using "+ operator + " is not the initial state");
+                                // TODO add reason why branch was not continued
+                                System.out.println("Repeated state: " +childState);
                             }
                         }
                     }

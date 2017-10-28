@@ -71,7 +71,9 @@ public class EmptyArm extends Predicate {
                 if(otherBlock.equals(block)) {
                     continue;
                 }
-                preOperators.add(new Stack(block, otherBlock, arm));
+                if(block.weight <= otherBlock.weight) {
+                    preOperators.add(new Stack(block, otherBlock, arm));
+                }
             }
 
         }

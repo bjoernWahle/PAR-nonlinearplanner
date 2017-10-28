@@ -55,7 +55,7 @@ public class BlocksWorld {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
 
-        URL resource = BlocksWorld.class.getResource("/simple");
+        URL resource = BlocksWorld.class.getResource("/simple1");
         //URL resource = BlocksWorld.class.getResource("/simple1");
 
         File file = null;
