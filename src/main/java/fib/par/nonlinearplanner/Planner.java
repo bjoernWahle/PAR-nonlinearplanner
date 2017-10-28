@@ -143,7 +143,7 @@ public class Planner {
                         if(childState.isValid() && operator.isExecutable(childState)) {
                             if(!states.contains(childState)) {
                                 StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator);
-                                System.out.println("Level "+i+": Adding "+ operator + " to the tree");
+                                System.out.println("Level "+(i+1)+": Adding "+ operator + " to the tree");
                                 node.addChild(child);
                                 states.add(child.getState());
                                 // if the state is the initial state set initialStateFound to true to stop for loops

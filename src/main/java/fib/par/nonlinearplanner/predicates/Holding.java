@@ -6,6 +6,7 @@ import fib.par.nonlinearplanner.BlocksWorld;
 import fib.par.nonlinearplanner.operators.*;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -67,7 +68,7 @@ public class Holding extends Predicate {
     @Override
     public Set<Operator> getPreOperators() { //pickUp, unstack
         Set<Operator> preOperators = new HashSet<Operator>();
-        List<Block> otherBlocks = BlocksWorld.getBlocksList();
+        List<Block> otherBlocks = new LinkedList<Block>(BlocksWorld.getBlocksList());
         otherBlocks.remove(block);
         for (Block otherBlock : otherBlocks) {
             if (block.weight == 1) {
