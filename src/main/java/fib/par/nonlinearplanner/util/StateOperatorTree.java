@@ -10,6 +10,20 @@ import java.util.List;
 public class StateOperatorTree {
     private Node root;
 
+    public int getNodesCount() {
+        return _getNodesCount(root);
+    }
+
+    private int _getNodesCount(Node node) {
+        int count = 1;
+        if(node.children.size()>0) {
+            for(Node cNode : node.children) {
+                count += _getNodesCount(cNode);
+            }
+        }
+        return count;
+    }
+
     public Node getRoot() {
         return root;
     }

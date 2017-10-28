@@ -14,7 +14,7 @@ import static fib.par.nonlinearplanner.BlocksWorld.blocksList;
 public class State {
     final Set<Predicate> predicateSet;
 
-    State() {
+    public State() {
         predicateSet = new HashSet<Predicate>();
     }
 

@@ -17,7 +17,7 @@ public class BlocksWorld {
 
     public static int MAX_COLUMNS;
 
-    static List<Block> blocksList;
+    public static List<Block> blocksList;
 
     static Set<Predicate> getLightBlockPredicates() {
         Set<Predicate> lightBlockPredicates = new HashSet<Predicate>();
@@ -55,7 +55,7 @@ public class BlocksWorld {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
 
-        URL resource = BlocksWorld.class.getResource("/simple1");
+        URL resource = BlocksWorld.class.getResource("/simple");
         //URL resource = BlocksWorld.class.getResource("/simple1");
 
         File file = null;
@@ -69,7 +69,9 @@ public class BlocksWorld {
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
         Plan plan = myPlanner.findBestPlanWithRegression(5);
         System.out.println(plan.operators);
-        myPlanner.executePlan(plan);
+        boolean validPlan = myPlanner.verifyPlan(myPlanner.bestPlan);
+        System.out.println("Best plan is valid: "+validPlan);
+        System.out.println(myPlanner.generateOutput());
     }
 
     public static List<Block> getBlocksList() {

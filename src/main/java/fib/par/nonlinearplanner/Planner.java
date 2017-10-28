@@ -4,22 +4,50 @@ import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.Predicate;
 import fib.par.nonlinearplanner.util.StateOperatorTree;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Planner {
-    State initialState;
+    private State initialState;
     State finalState;
-    State currentState;
-    List<State> pastStates;
+    private State currentState;
+    Plan bestPlan;
+    private StateOperatorTree stateOperatorTree;
+    private boolean planningAlgorithmExecuted;
 
     public Planner(State initialState, State finalState) {
         this.initialState = initialState;
         this.finalState = finalState;
         this.currentState = initialState;
-        this.pastStates = new LinkedList<State>();
+        this.planningAlgorithmExecuted = false;
+    }
+
+    public String generateOutput() {
+        if(planningAlgorithmExecuted) {
+            StringBuilder strB = new StringBuilder();
+            // add number of operators in the best plan
+            int numberOfOperators = bestPlan.operators.size();
+            // get number of states produced in the tree
+            int numberOfStatesProduced = stateOperatorTree.getNodesCount();
+            // generate operator list from plan
+            String operatorList = String.join(
+                    ",",
+                    bestPlan.operators.stream().map(Object::toString).collect(Collectors.toList())
+            );
+
+            strB.append(numberOfOperators);
+            strB.append(System.getProperty("line.separator"));
+            strB.append(numberOfStatesProduced);
+            strB.append(System.getProperty("line.separator"));
+            strB.append(operatorList);
+            strB.append(System.getProperty("line.separator"));
+            strB.append("---------");
+            strB.append(System.getProperty("line.separator"));
+            return strB.toString();
+        } else {
+            throw new IllegalStateException("Planning algorithm was not executed yet.");
+        }
     }
 
     public void executePlan(Plan plan) {
@@ -29,7 +57,16 @@ public class Planner {
             System.out.println("Applying operator "+ operator);
             currentState = operator.execute(currentState);
         }
-        System.out.println(opNum++ + ":" + currentState.simpleRepresentation());
+        System.out.println(opNum + ":" + currentState.simpleRepresentation());
+    }
+
+    public boolean verifyPlan(Plan plan) {
+        try{
+            executePlan(plan);
+        } catch (IllegalStateException e)  {
+            return false;
+        }
+        return isInFinalState();
     }
 
     public boolean isInFinalState() {
@@ -38,6 +75,7 @@ public class Planner {
 
     public Plan findBestPlanWithRegression(int maxLevel) {
         StateOperatorTree.Node initialStateNode = buildStateTree(maxLevel, initialState, finalState);
+        this.planningAlgorithmExecuted = true;
         // if initial state node is null, the algorithm did not find a plan for the problem in the maximum number of
         // levels
         if(initialStateNode == null) {
@@ -50,10 +88,11 @@ public class Planner {
             operatorList.add(currentNode.getOperator());
             currentNode = currentNode.getParent();
         }
-        return new Plan(operatorList);
+        bestPlan = new Plan(operatorList);
+        return bestPlan;
     }
 
-    public static StateOperatorTree.Node buildStateTree(int maxLevel, State initialState, State finalState) {
+    private StateOperatorTree.Node buildStateTree(int maxLevel, State initialState, State finalState) {
         StateOperatorTree tree = new StateOperatorTree(finalState, null);
         boolean initialStateFound = false;
         StateOperatorTree.Node initialStateNode = null;
@@ -106,6 +145,7 @@ public class Planner {
                 }
             }
         }
+        stateOperatorTree = tree;
         return initialStateNode;
     }
 

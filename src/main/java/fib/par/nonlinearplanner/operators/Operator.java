@@ -22,7 +22,7 @@ public abstract class Operator {
         return arePreconditionsMet(stateBefore);
     }
 
-    public State execute(State stateBefore) {
+    public State execute(State stateBefore) throws IllegalStateException {
         if(isExecutable(stateBefore)) {
             State stateAfter = stateBefore.applyOperator(this);
             return stateAfter;

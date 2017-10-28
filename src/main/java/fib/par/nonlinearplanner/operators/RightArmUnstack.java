@@ -30,6 +30,25 @@ public class RightArmUnstack extends Operator {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RightArmUnstack that = (RightArmUnstack) o;
+
+        if (blockToUnstack != null ? !blockToUnstack.equals(that.blockToUnstack) : that.blockToUnstack != null)
+            return false;
+        return lowerBlock != null ? lowerBlock.equals(that.lowerBlock) : that.lowerBlock == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = blockToUnstack != null ? blockToUnstack.hashCode() : 0;
+        result = 31 * result + (lowerBlock != null ? lowerBlock.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "RightArmUnstack("+blockToUnstack.simpleRepresentation()+","+lowerBlock.simpleRepresentation()+")";
     }
