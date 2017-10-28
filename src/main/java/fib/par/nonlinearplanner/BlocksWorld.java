@@ -55,7 +55,7 @@ public class BlocksWorld {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
 
-        URL resource = BlocksWorld.class.getResource("/simple1");
+        URL resource = BlocksWorld.class.getResource("/input");
         //URL resource = BlocksWorld.class.getResource("/simple1");
 
         File file = null;
@@ -67,7 +67,7 @@ public class BlocksWorld {
 
         Planner myPlanner = parser.readInputFile(file);
         System.out.println(myPlanner.finalState.getPossiblePreOperators());
-        Plan plan = myPlanner.findBestPlanWithRegression(5);
+        Plan plan = myPlanner.findBestPlanWithRegression(30);
         System.out.println(plan.operators);
         boolean validPlan = myPlanner.verifyPlan(myPlanner.bestPlan);
         System.out.println("Best plan is valid: "+validPlan);

@@ -77,7 +77,7 @@ public class Holding extends Predicate {
             preOperators.add(new RightArmUnstack(block, otherBlock));
         }
 
-        for (int i = 1; i < BlocksWorld.MAX_COLUMNS; i++) {
+        for (int i = 1; i <= BlocksWorld.MAX_COLUMNS; i++) {
             if (block.weight == 1) {
                 preOperators.add(new LeftArmPickUp(block, i));
             }

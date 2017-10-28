@@ -74,6 +74,11 @@ public class StateOperatorTree {
             this.children.add(child);
         }
 
+        @Override
+        public String toString() {
+            return "Node(S," + operator+")";
+        }
+
         public State getState() {
             return state;
         }
