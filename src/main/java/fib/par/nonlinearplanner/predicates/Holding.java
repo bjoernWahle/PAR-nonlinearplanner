@@ -71,17 +71,23 @@ public class Holding extends Predicate {
         List<Block> otherBlocks = new LinkedList<Block>(BlocksWorld.getBlocksList());
         otherBlocks.remove(block);
         for (Block otherBlock : otherBlocks) {
-            if (block.weight == 1) {
-                preOperators.add(new LeftArmUnstack(block, otherBlock));
+            if (arm.equals(Arm.leftArm)) {
+                if (block.weight == 1) {
+                    preOperators.add(new LeftArmUnstack(block, otherBlock));
+                }
+            } else {
+                preOperators.add(new RightArmUnstack(block, otherBlock));
             }
-            preOperators.add(new RightArmUnstack(block, otherBlock));
         }
 
-        for (int i = 1; i <= BlocksWorld.MAX_COLUMNS; i++) {
-            if (block.weight == 1) {
-                preOperators.add(new LeftArmPickUp(block, i));
+        for (int i = 0; i < BlocksWorld.MAX_COLUMNS; i++) {
+            if (arm.equals(Arm.leftArm)) {
+                if (block.weight == 1) {
+                    preOperators.add(new LeftArmPickUp(block, i));
+                }
+            } else {
+                preOperators.add(new RightArmPickUp(block, i));
             }
-            preOperators.add(new RightArmPickUp(block, i));
         }
         return preOperators;
     }

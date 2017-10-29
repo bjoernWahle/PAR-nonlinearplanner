@@ -13,9 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-class BlocksWorldInputParser {
+public class BlocksWorldInputParser {
 
-    Planner readInputFile(File file) {
+    public Planner readInputFile(File file) {
         try {
 
             BufferedReader br = new BufferedReader(new FileReader(file));

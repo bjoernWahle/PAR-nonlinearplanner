@@ -1,9 +1,8 @@
+import fib.par.nonlinearplanner.Arm;
 import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.BlocksWorld;
-import fib.par.nonlinearplanner.operators.LeftArmUnstack;
-import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.operators.RightArmUnstack;
-import fib.par.nonlinearplanner.predicates.Clear;
+import fib.par.nonlinearplanner.operators.*;
+import fib.par.nonlinearplanner.predicates.Holding;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -12,8 +11,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ClearTest {
-
+public class HoldingTest {
     private void setup() {
         BlocksWorld.blocksList = new LinkedList<Block>();
         Block a = new Block("A", 1);
@@ -29,16 +27,30 @@ public class ClearTest {
         setup();
         Block a = BlocksWorld.getBlockFromName("A");
         Block b = BlocksWorld.getBlockFromName("B");
+        Arm arm = Arm.rightArm;
 
-        Clear clear = new Clear(a);
+        Holding holding = new Holding(b, arm);
 
         // execute
-        Set<Operator> operatorSet = clear.getPreOperators();
+        Set<Operator> operatorSet = holding.getPreOperators();
 
         // validate
         Set<Operator> expectedOperators = new HashSet<Operator>();
-        expectedOperators.add(new RightArmUnstack(a, b));
-        expectedOperators.add(new LeftArmUnstack(a, b));
+
+        // Left Arm
+        //expectedOperators.add(new LeftArmUnstack(a, b));
+        //expectedOperators.add(new LeftArmPickUp(a, 0));
+        //expectedOperators.add(new LeftArmPickUp(a, 1));
+        //expectedOperators.add(new LeftArmPickUp(a, 2));
+
+        // Right Arm
+        //expectedOperators.add(new RightArmUnstack(a, b));
+        expectedOperators.add(new RightArmPickUp(b, 0));
+        expectedOperators.add(new RightArmPickUp(b, 1));
+        expectedOperators.add(new RightArmPickUp(b, 2));
+
+
+
         System.out.println("Expected Operators: "+expectedOperators);
         System.out.println("Operator Set: "+operatorSet);
         assertEquals(operatorSet, expectedOperators);
