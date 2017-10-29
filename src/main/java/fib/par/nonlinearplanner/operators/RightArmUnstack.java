@@ -8,8 +8,8 @@ import fib.par.nonlinearplanner.predicates.Holding;
 import fib.par.nonlinearplanner.predicates.On;
 
 public class RightArmUnstack extends Operator {
-    public Block blockToUnstack;
-    public Block lowerBlock;
+    private final Block blockToUnstack;
+    private final Block lowerBlock;
 
     public RightArmUnstack(Block blockToUnstack, Block lowerBlock) {
         this.blockToUnstack = blockToUnstack;

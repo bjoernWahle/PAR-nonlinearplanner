@@ -1,14 +1,10 @@
 package fib.par.nonlinearplanner;
 
-import com.sun.org.apache.xpath.internal.operations.Neg;
 import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static fib.par.nonlinearplanner.BlocksWorld.MAX_COLUMNS;
-import static fib.par.nonlinearplanner.BlocksWorld.blocksList;
 
 public class State {
     final Set<Predicate> predicateSet;
@@ -17,11 +13,11 @@ public class State {
         predicateSet = new HashSet<Predicate>();
     }
 
-    public State(Set<Predicate> predicateSet) {
+    private State(Set<Predicate> predicateSet) {
         this.predicateSet = predicateSet;
     }
 
-    public boolean meetsPrecondition(Predicate precondition) {
+    private boolean meetsPrecondition(Predicate precondition) {
         if(precondition instanceof Negation) {
             return !predicateSet.contains(((Negation) precondition).predicate);
         } else {
@@ -40,15 +36,17 @@ public class State {
 
     @Override
     public String toString() {
-        String str = "";
-        str += "State: ";
-        str += "(Predicates: ";
+        StringBuilder str = new StringBuilder("State(Predicates: ");
         for(Predicate predicate : predicateSet) {
-            str += predicate + ",";
+            str.append(predicate).append(",");
         }
-        str = str.substring(0, str.length()-1);
-        str += ")";
-        return str;
+        str = new StringBuilder(str.substring(0, str.length() - 1));
+        str.append(")");
+        return str.toString();
+    }
+
+    public String predicateListString() {
+        return String.join(",", predicateSet.stream().filter(p -> !(p instanceof Heavier) && !(p instanceof LightBlock) ).map(Predicate::toString).collect(Collectors.toList()));
     }
 
     public void addPredicate(Predicate predicate) {
@@ -92,17 +90,15 @@ public class State {
     }
 
     String simpleRepresentation() {
-        String str = "";
-        str += "State: ";
-        str += "(Predicates: ";
+        StringBuilder str = new StringBuilder("State(Predicates: ");
         for(Predicate predicate : predicateSet) {
             if(!(predicate instanceof Heavier || predicate instanceof LightBlock)) {
-                str += predicate + ",";
+                str.append(predicate).append(",");
             }
         }
-        str = str.substring(0, str.length()-1);
-        str += ")";
-        return str;
+        str = new StringBuilder(str.substring(0, str.length() - 1));
+        str.append(")");
+        return str.toString();
     }
 
     Set<Operator> getPossiblePreOperators() {
@@ -130,10 +126,7 @@ public class State {
         if(!onTablePredicatesValid()) {
             return false;
         }
-        if(!onPredicatesValid()) {
-            return false;
-        }
-        return true;
+        return onPredicatesValid();
     }
 
     private boolean onPredicatesValid() {
@@ -142,16 +135,19 @@ public class State {
         // check that no block has two blocks on it
         List<Block> lowerBlocks = onPredicates.stream().map(On::getLowerBlock).collect(Collectors.toList());
         List<Block> upperBlocks = onPredicates.stream().map(On::getUpperBlock).collect(Collectors.toList());
+        if(new HashSet<Block>(lowerBlocks).size() > lowerBlocks.size()) {
+            return false;
+        }
+        if(new HashSet<Block>(upperBlocks).size() > upperBlocks.size()) {
+            return false;
+        }
         return true;
     }
 
     private boolean usedColumnsNumValid() {
         List<UsedColumnsNum> usedColumnsNumSet = predicateSet.stream().filter(p -> p instanceof UsedColumnsNum)
                 .map(p -> (UsedColumnsNum)p).collect(Collectors.toList());
-        if(usedColumnsNumSet.size()>1 || usedColumnsNumSet.size() == 0) {
-            return false;
-        }
-        return true;
+        return usedColumnsNumSet.size() <= 1 && usedColumnsNumSet.size() != 0;
     }
 
     private boolean onTablePredicatesValid() {
@@ -188,7 +184,7 @@ public class State {
         Set<Arm> holdingArms = predicateSet.stream().filter(p -> p instanceof Holding).map(p -> ((Holding) p).getArm()).collect(Collectors.toSet());
         if(emptyArms.size() + holdingArms.size() > 2) {
             return false;
-        };
+        }
         // emptyArms contains the intersection of the arms after retainAll
         emptyArms.retainAll(holdingArms);
         // if intersection has elements it means that there is at least one arm that is also holding a block
@@ -218,14 +214,14 @@ public class State {
         int maxHeight = columns.stream().max(Comparator.comparingInt(List::size)).get().size();
         String gap = "    ";
         for(int i = maxHeight-1; i >= 0; i--) {
-            String levelString = "";
+            StringBuilder levelString = new StringBuilder();
             for(List<Block> blocks : columns) {
                 if(blocks.size() > i) {
-                    levelString += blocks.get(i).simpleRepresentation();
+                    levelString.append(blocks.get(i).simpleRepresentation());
                 } else {
-                    levelString += " ";
+                    levelString.append(" ");
                 }
-                levelString += gap;
+                levelString.append(gap);
             }
             System.out.println(levelString);
         }
@@ -256,7 +252,7 @@ public class State {
         }
     }
 
-    public Block getBlockHeldByLeftArm() {
+    private Block getBlockHeldByLeftArm() {
         List<Block> blocks = predicateSet.stream().filter(p -> (p instanceof Holding && (((Holding) p).getArm().equals(Arm.leftArm)))).map(h -> ((Holding) h).getBlock()).collect(Collectors.toList());
         if(blocks.size() == 0) {
             return null;
@@ -265,7 +261,7 @@ public class State {
         }
     }
 
-    public Block getBlockHeldByRightArm() {
+    private Block getBlockHeldByRightArm() {
         List<Block> blocks = predicateSet.stream().filter(p -> (p instanceof Holding && (((Holding) p).getArm().equals(Arm.rightArm)))).map(h -> ((Holding) h).getBlock()).collect(Collectors.toList());
         if(blocks.size() == 0) {
             return null;
@@ -274,7 +270,7 @@ public class State {
         }
     }
 
-    public List<Block> getOnTableBlocks() {
+    private List<Block> getOnTableBlocks() {
         return predicateSet.stream().filter(p -> p instanceof OnTable).map(p -> ((OnTable)p).getBlock()).collect(Collectors.toList());
     }
 }

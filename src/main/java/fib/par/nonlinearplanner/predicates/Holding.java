@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Holding extends Predicate {
-    final Block block;
-    final Arm arm;
+    private final Block block;
+    private final Arm arm;
 
-    private static String INPUT_NAME = "HOLDING";
+    private static final String INPUT_NAME = "HOLDING";
 
     public Holding(Block block, Arm arm) {
         this.block = block;
@@ -29,9 +29,8 @@ public class Holding extends Predicate {
         paramsNames = paramsNames.substring(0, paramsNames.length() - 1);
         String blockName = paramsNames.split(",")[0];
         String armName = paramsNames.split(",")[1];
-        Holding holding = new Holding(BlocksWorld.getBlockFromName(blockName), Arm.fromString(armName));
 
-        return holding;
+        return new Holding(BlocksWorld.getBlockFromName(blockName), Arm.fromString(armName));
     }
 
     @Override

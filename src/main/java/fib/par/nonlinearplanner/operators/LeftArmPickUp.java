@@ -4,8 +4,8 @@ import fib.par.nonlinearplanner.*;
 import fib.par.nonlinearplanner.predicates.*;
 
 public class LeftArmPickUp extends Operator {
-    final Block blockToPickUp;
-    final int usedColsBefore;
+    private final Block blockToPickUp;
+    private final int usedColsBefore;
 
     @Override
     public boolean equals(Object o) {

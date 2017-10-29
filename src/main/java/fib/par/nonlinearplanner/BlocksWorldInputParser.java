@@ -6,11 +6,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 class BlocksWorldInputParser {
@@ -26,8 +21,7 @@ class BlocksWorldInputParser {
 
             // extract max column number
             String maxColumns = columnsString.split("MaxColumns=")[1];
-            int maxColumnsInt = Integer.parseInt(maxColumns.substring(0, maxColumns.length()-1));
-            BlocksWorld.MAX_COLUMNS = maxColumnsInt;
+            BlocksWorld.MAX_COLUMNS = Integer.parseInt(maxColumns.substring(0, maxColumns.length()-1));
 
             // extract blocks
             String blocks = blocksString.split("Blocks=")[1];

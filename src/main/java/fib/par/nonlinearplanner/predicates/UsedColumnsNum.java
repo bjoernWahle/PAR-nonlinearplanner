@@ -10,7 +10,7 @@ public class UsedColumnsNum extends Predicate {
         return usedColumns;
     }
 
-    int usedColumns;
+    private final int usedColumns;
 
     public UsedColumnsNum(int usedColumns) {
         this.usedColumns = usedColumns;
@@ -38,7 +38,6 @@ public class UsedColumnsNum extends Predicate {
 
     @Override
     public Set<Operator> getPreOperators() {
-        // TODO implement
         return new HashSet<Operator>();
     }
 }

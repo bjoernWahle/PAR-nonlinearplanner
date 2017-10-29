@@ -10,10 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class On extends Predicate {
-    Block lowerBlock;
-    Block upperBlock;
+    private final Block lowerBlock;
+    private final Block upperBlock;
 
-    public static String INPUT_NAME = "ON";
+    private static final String INPUT_NAME = "ON";
 
     public static On fromString(String string) {
         if(!string.startsWith(INPUT_NAME+"(")) {
@@ -23,8 +23,7 @@ public class On extends Predicate {
         blockNames = blockNames.substring(0, blockNames.length()-1);
         String[] blocksStrings = blockNames.split(",");
 
-        On on = new On(BlocksWorld.getBlockFromName(blocksStrings[0]),BlocksWorld.getBlockFromName(blocksStrings[1]));
-        return on;
+        return new On(BlocksWorld.getBlockFromName(blocksStrings[0]),BlocksWorld.getBlockFromName(blocksStrings[1]));
     }
 
     public On(Block b, Block a) {

@@ -5,9 +5,9 @@ import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.predicates.*;
 
 public class Stack extends Operator {
-    public Block blockToStack;
-    public Block lowerBlock;
-    public Arm arm;
+    private final Block blockToStack;
+    private final Block lowerBlock;
+    private final Arm arm;
 
     public Stack(Block blockToStack, Block lowerBlock, Arm arm) {
         this.blockToStack = blockToStack;

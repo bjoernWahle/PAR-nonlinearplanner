@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Planner {
-    private State initialState;
-    State finalState;
+class Planner {
+    private final State initialState;
+    private final State finalState;
     private State currentState;
     Plan bestPlan;
     private StateOperatorTree stateOperatorTree;
@@ -37,6 +37,8 @@ public class Planner {
                     ",",
                     bestPlan.operators.stream().map(Object::toString).collect(Collectors.toList())
             );
+            // generate discontinued states list
+            List<StateOperatorTree.Node> discontinuedNodeList = stateOperatorTree.getInvalidNodes();
 
             strB.append(numberOfOperators);
             strB.append(System.getProperty("line.separator"));
@@ -46,13 +48,23 @@ public class Planner {
             strB.append(System.getProperty("line.separator"));
             strB.append("---------");
             strB.append(System.getProperty("line.separator"));
+
+            for(StateOperatorTree.Node node :discontinuedNodeList) {
+                strB.append(node.getState().predicateListString());
+                strB.append(System.getProperty("line.separator"));
+                strB.append(node.getStatus().getReason());
+                strB.append(System.getProperty("line.separator"));
+                strB.append("---------");
+                strB.append(System.getProperty("line.separator"));
+            }
+
             return strB.toString();
         } else {
             throw new IllegalStateException("Planning algorithm was not executed yet.");
         }
     }
 
-    public void executePlan(Plan plan) {
+    private void executePlan(Plan plan) {
         int opNum = 0;
         for(Operator operator: plan.operators) {
             System.out.println(opNum++ +":"+ currentState.simpleRepresentation());
@@ -73,17 +85,17 @@ public class Planner {
         return isInFinalState();
     }
 
-    public boolean isInFinalState() {
+    private boolean isInFinalState() {
         return currentState.equals(finalState);
     }
 
-    public Plan findBestPlanWithRegression(int maxLevel) {
+    public void findBestPlanWithRegression(int maxLevel) {
         StateOperatorTree.Node initialStateNode = buildStateTree(maxLevel, initialState, finalState);
         this.planningAlgorithmExecuted = true;
         // if initial state node is null, the algorithm did not find a plan for the problem in the maximum number of
         // levels
         if(initialStateNode == null) {
-            return null;
+            return;
         }
         List<Operator> operatorList = new LinkedList<Operator>();
         StateOperatorTree.Node currentNode = initialStateNode;
@@ -93,27 +105,25 @@ public class Planner {
             currentNode = currentNode.getParent();
         }
         bestPlan = new Plan(operatorList);
-        return bestPlan;
     }
 
     private StateOperatorTree.Node buildStateTree(int maxLevel, State initialState, State finalState) {
-        StateOperatorTree tree = new StateOperatorTree(finalState, null);
+        StateOperatorTree tree = new StateOperatorTree(finalState);
         boolean initialStateFound = false;
         StateOperatorTree.Node initialStateNode = null;
         Set<State> states = new HashSet<State>();
         // add final state to the list of already reached states
         states.add(finalState);
         for(int i = 0; i < maxLevel; i++) {
-            if(initialStateFound) {
+            if(initialStateFound) break;
+            // iterate over levels and create them
+            // 1. get nodes in current level and select only those that should be continued
+            List<StateOperatorTree.Node> nodeList = tree.getNodesInLevel(i).stream().filter(StateOperatorTree.Node::isValid).collect(Collectors.toList());
+            if(nodeList.size() == 0) {
                 break;
             }
-            // iterate over levels and create them
-            // 1. get nodes in current level
-            List<StateOperatorTree.Node> nodeList = tree.getNodesInLevel(i);
             for(StateOperatorTree.Node node : nodeList) {
-                if(initialStateFound) {
-                    break;
-                }
+                if(initialStateFound) break;
                 // for each node, get the state
                 State state = node.getState();
                 // TODO think about if this could be implemented more efficient
@@ -121,43 +131,33 @@ public class Planner {
                 // check if it could be applied using goal regression
                 Set<Operator> possiblePreOperators = state.getPossiblePreOperators();
                 for(Operator operator : possiblePreOperators) {
-                    if(initialStateFound) {
-                        break;
-                    }
-                    boolean operatorPossible = true;
-                    // check if the regression function returns true for all predicates in final state
-                    for(Predicate predicate : state.predicateSet) {
-                        if(!regression(operator, predicate)) {
-                            operatorPossible = false;
-                            break;
-                        }
-                    }
-                    if(operatorPossible) {
-                        if(!state.predicateSet.containsAll(operator.addList)) {
-                            operatorPossible = false;
-                        }
-                    }
+                    if(initialStateFound) break;
                     // if operator possible, apply it reversely to the state to obtain its previous state
-                    if(operatorPossible) {
+                    if(regression(operator, state.predicateSet)) {
                         State childState = state.applyOperatorReverse(operator);
                         // if the previous state is valid and the operators preconditions are met
                         // add it to the tree with the operator
-                        if(childState.isValid() && operator.isExecutable(childState)) {
-                            if(!states.contains(childState)) {
-                                StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator);
-                                System.out.println("Level "+(i+1)+": Adding "+ operator + " to the tree");
-                                node.addChild(child);
-                                states.add(child.getState());
-                                // if the state is the initial state set initialStateFound to true to stop for loops
-                                if(childState.equals(initialState)) {
-                                    initialStateFound = true;
-                                    initialStateNode = child;
-                                    System.out.println("Initial state found in level "+(i+1)+". Operator: "+ operator);
-                                }
-                            } else {
-                                // TODO add reason why branch was not continued
-                                System.out.println("Repeated state: " +childState.simpleRepresentation());
-                            }
+                        StateOperatorTree.Node.NodeStatus status;
+                        if(!childState.isValid()) {
+                            // prior state would be invalid
+                            status = StateOperatorTree.Node.NodeStatus.INVALID_STATE;
+                        } else if(!operator.isExecutable(childState)) {
+                            // operator cannot be executed on the child state (missing prec)
+                            status = StateOperatorTree.Node.NodeStatus.OP_PREC_NOT_MET;
+                        } else if(states.contains(childState)) {
+                            // state was already found in the tree
+                            status = StateOperatorTree.Node.NodeStatus.REPEATED_STATE;
+                        } else {
+                            status = StateOperatorTree.Node.NodeStatus.VALID;
+                        }
+                        StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator, status);
+                        node.addChild(child);
+                        states.add(child.getState());
+                        // if the state is the initial state set initialStateFound to true to stop for loops
+                        if(status == StateOperatorTree.Node.NodeStatus.VALID && childState.equals(initialState)) {
+                            initialStateFound = true;
+                            initialStateNode = child;
+                            System.out.println("Initial state found in level "+(i+1)+".");
                         }
                     }
                 }
@@ -167,7 +167,15 @@ public class Planner {
         return initialStateNode;
     }
 
-    private static boolean regression(Operator o, Predicate p) {
+    private static boolean regression2(Operator o, Predicate p) {
         return !o.deleteList.contains(p);
+    }
+
+    private static boolean regression(Operator o, Set<Predicate> p) {
+        return p.containsAll(o.addList) && o.deleteList.stream().noneMatch(p::contains);
+    }
+
+    public boolean planWasFound() {
+        return bestPlan != null;
     }
 }

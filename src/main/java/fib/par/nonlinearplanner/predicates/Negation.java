@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Negation extends Predicate {
-    public Predicate predicate;
+    public final Predicate predicate;
 
     public Negation(Predicate predicate) {
         this.predicate = predicate;
@@ -29,7 +29,7 @@ public class Negation extends Predicate {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Not("+predicate+")";
     }
 
     @Override

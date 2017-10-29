@@ -11,7 +11,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ClearTest {
+class ClearTest {
 
     private void setup() {
         BlocksWorld.blocksList = new LinkedList<Block>();
@@ -23,7 +23,7 @@ public class ClearTest {
     }
 
     @Test
-    public void getPreOperatorsShouldReturnCorrectPreOperators() {
+    void getPreOperatorsShouldReturnCorrectPreOperators() {
         // setup
         setup();
         Block a = BlocksWorld.getBlockFromName("A");
