@@ -5,8 +5,8 @@ import fib.par.nonlinearplanner.Block;
 import fib.par.nonlinearplanner.predicates.*;
 
 public class LeftArmUnstack extends Operator {
-    public Block blockToUnstack;
-    public Block lowerBlock;
+    private final Block blockToUnstack;
+    private final Block lowerBlock;
 
     @Override
     public boolean equals(Object o) {

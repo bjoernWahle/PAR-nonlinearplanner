@@ -29,11 +29,11 @@ public class Block {
 
     @Override
     public String toString() {
-        String string = name;
+        StringBuilder string = new StringBuilder(name);
         for(int i=0; i< weight; i++) {
-            string+= "*";
+            string.append("*");
         }
-        return string;
+        return string.toString();
     }
 
     public String simpleRepresentation() {

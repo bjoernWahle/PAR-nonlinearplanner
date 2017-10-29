@@ -6,9 +6,9 @@ import fib.par.nonlinearplanner.BlocksWorld;
 import fib.par.nonlinearplanner.predicates.*;
 
 public class Leave extends Operator {
-    public Block blockToLeave;
-    public Arm arm;
-    public int usedColsBefore;
+    private final Block blockToLeave;
+    private final Arm arm;
+    private final int usedColsBefore;
 
     @Override
     public boolean equals(Object o) {

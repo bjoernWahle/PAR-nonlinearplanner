@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StateOperatorTree {
-    private Node root;
+    private final Node root;
 
     public int getNodesCount() {
         return _getNodesCount(root);
@@ -24,13 +24,26 @@ public class StateOperatorTree {
         return count;
     }
 
+    public List<Node> getInvalidNodes() {
+        return _getInvalidNodes(root);
+    }
+
+    private List<Node> _getInvalidNodes(Node node) {
+        List<Node> nodeList = new LinkedList<Node>();
+        if(!node.isValid()) {
+            nodeList.add(node);
+        } else {
+            for(Node cNode: node.children) {
+                nodeList.addAll(_getInvalidNodes(cNode));
+            }
+        }
+        return nodeList;
+    }
+
     public Node getRoot() {
         return root;
     }
 
-    public StateOperatorTree(State state, Operator operator) {
-        root = new Node(state, operator);
-    }
     public StateOperatorTree(State state) {
         root = new Node(state);
     }
@@ -49,23 +62,51 @@ public class StateOperatorTree {
     }
 
     public static class Node {
-        private State state;
+        private final State state;
         private Operator operator;
-        private List<Node> children;
+        private final List<Node> children;
         private Node parent;
+        private final NodeStatus status;
+
+        public boolean isValid() {
+            return status == NodeStatus.VALID;
+        }
+
+        public NodeStatus getStatus() {
+            return status;
+        }
+
+        public enum NodeStatus {
+            VALID("Node is valid"),
+            REPEATED_STATE("Repeated state"),
+            INVALID_STATE("State is not valid"),
+            OP_PREC_NOT_MET("Operator preconditions are not fulfilled.");
+
+            final String reason;
+
+            NodeStatus(String reason) {
+                this.reason = reason;
+            }
+
+            public String getReason() {
+                return reason;
+            }
+        }
 
         public boolean isRoot() {
             return parent == null;
         }
 
-        public Node(State state, Operator operator) {
+        public Node(State state, Operator operator, NodeStatus status) {
             this.state = state;
+            this.status = status;
             this.operator = operator;
             this.children = new ArrayList<Node>();
         }
 
-        public Node(State state) {
+        Node(State state) {
             this.state = state;
+            this.status = NodeStatus.VALID;
             this.children = new ArrayList<Node>();
         }
 
@@ -89,10 +130,6 @@ public class StateOperatorTree {
 
         public List<Node> getChildren() {
             return children;
-        }
-
-        public void setOperator(Operator operator) {
-            this.operator = operator;
         }
 
         public Node getParent() {

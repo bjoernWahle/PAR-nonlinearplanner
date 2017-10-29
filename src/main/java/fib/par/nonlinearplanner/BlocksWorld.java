@@ -1,12 +1,10 @@
 package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.predicates.*;
-import fib.par.nonlinearplanner.util.StateOperatorTree;
 
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
@@ -66,12 +64,18 @@ public class BlocksWorld {
         }
 
         Planner myPlanner = parser.readInputFile(file);
-        Plan plan = myPlanner.findBestPlanWithRegression(30);
-        boolean validPlan = myPlanner.verifyPlan(myPlanner.bestPlan);
-        System.out.println("Best plan is valid: "+validPlan);
+        myPlanner.findBestPlanWithRegression(100);
+        if(myPlanner.planWasFound()) {
+            Plan plan = myPlanner.bestPlan;
+            boolean validPlan = myPlanner.verifyPlan(plan);
+            System.out.println("Best plan is valid: "+validPlan);
 
-        System.out.println("Output: ");
-        System.out.println(myPlanner.generateOutput());
+            System.out.println("Output: ");
+            System.out.println(myPlanner.generateOutput());
+        } else {
+            System.out.println("No plan could be found.");
+        }
+
     }
 
     public static List<Block> getBlocksList() {

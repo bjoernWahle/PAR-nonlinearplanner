@@ -8,13 +8,12 @@ import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.operators.Stack;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class EmptyArm extends Predicate {
-    final Arm arm;
+    private final Arm arm;
 
-    public static String INPUT_NAME = "EMPTY-ARM";
+    private static final String INPUT_NAME = "EMPTY-ARM";
 
     public EmptyArm(Arm arm) {
         this.arm = arm;
@@ -26,9 +25,8 @@ public class EmptyArm extends Predicate {
         }
         String armName = string.split(INPUT_NAME+"\\(")[1];
         armName = armName.substring(0, armName.length()-1);
-        EmptyArm emptyArm = new EmptyArm(Arm.fromString(armName));
 
-        return emptyArm;
+        return new EmptyArm(Arm.fromString(armName));
     }
 
     @Override

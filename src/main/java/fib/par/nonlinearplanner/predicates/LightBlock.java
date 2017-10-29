@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LightBlock extends Predicate {
-    final Block block;
+    private final Block block;
 
     public LightBlock(Block block) {
         this.block = block;

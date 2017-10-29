@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Clear extends Predicate {
-    final Block block;
+    private final Block block;
 
     public static Clear fromString(String string) {
         if(!string.startsWith("CLEAR(")) {
@@ -20,8 +20,7 @@ public class Clear extends Predicate {
         }
         String blockName = string.split("CLEAR\\(")[1];
         blockName = blockName.substring(0, blockName.length()-1);
-        Clear clear = new Clear(BlocksWorld.getBlockFromName(blockName));
-        return clear;
+        return new Clear(BlocksWorld.getBlockFromName(blockName));
     }
 
     public Clear(Block block) {

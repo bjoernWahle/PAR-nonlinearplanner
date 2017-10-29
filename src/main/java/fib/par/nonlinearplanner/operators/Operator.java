@@ -8,7 +8,7 @@ import java.util.Set;
 
 public abstract class Operator {
 
-    public final Set<Predicate> preconditions;
+    final Set<Predicate> preconditions;
     public final Set<Predicate> addList;
     public final Set<Predicate> deleteList;
 
@@ -24,8 +24,7 @@ public abstract class Operator {
 
     public State execute(State stateBefore) throws IllegalStateException {
         if(isExecutable(stateBefore)) {
-            State stateAfter = stateBefore.applyOperator(this);
-            return stateAfter;
+            return stateBefore.applyOperator(this);
         } else {
             throw new IllegalStateException("Cannot execute operator " + this + " because preconditions are not met.");
         }

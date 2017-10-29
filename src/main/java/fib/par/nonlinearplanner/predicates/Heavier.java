@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Heavier extends Predicate {
-    final Block block1;
-    final Block block2;
+    private final Block block1;
+    private final Block block2;
 
     public Heavier(Block block1, Block block2) {
         this.block1 = block1;

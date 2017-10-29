@@ -44,7 +44,7 @@ public class HoldingTest {
         //expectedOperators.add(new LeftArmPickUp(a, 2));
 
         // Right Arm
-        //expectedOperators.add(new RightArmUnstack(a, b));
+        expectedOperators.add(new RightArmUnstack(b, a));
         expectedOperators.add(new RightArmPickUp(b, 0));
         expectedOperators.add(new RightArmPickUp(b, 1));
         expectedOperators.add(new RightArmPickUp(b, 2));

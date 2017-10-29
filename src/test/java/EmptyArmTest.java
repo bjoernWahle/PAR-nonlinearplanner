@@ -56,8 +56,8 @@ public class EmptyArmTest {
         expectedOperators.add(new Stack(b, a, rightArm));
         expectedOperators.add(new Stack(a, b, rightArm));
 
-        System.out.println("Expected Operators: "+expectedOperators);
-        System.out.println("Operator Set: "+operatorSet);
+        System.out.println("Expected Operators: " + expectedOperators);
+        System.out.println("Operator Set: " + operatorSet);
         assertEquals(operatorSet, expectedOperators);
     }
 }

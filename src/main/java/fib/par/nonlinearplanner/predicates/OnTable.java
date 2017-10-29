@@ -11,9 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class OnTable extends Predicate {
-    Block block;
+    private final Block block;
 
-    public static String INPUT_NAME = "ON-TABLE";
+    private static final String INPUT_NAME = "ON-TABLE";
 
     public OnTable(Block block) {
         this.block = block;
@@ -25,8 +25,7 @@ public class OnTable extends Predicate {
         }
         String blockName = string.split(INPUT_NAME+"\\(")[1];
         blockName = blockName.substring(0, blockName.length()-1);
-        OnTable onTable = new OnTable(BlocksWorld.getBlockFromName(blockName));
-        return onTable;
+        return new OnTable(BlocksWorld.getBlockFromName(blockName));
     }
     @Override
     public String toString() {
