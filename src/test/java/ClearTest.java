@@ -37,8 +37,7 @@ class ClearTest {
 
         // validate
         Set<Operator> expectedOperators = new HashSet<Operator>();
-        expectedOperators.add(new RightArmUnstack(a, b));
-        expectedOperators.add(new LeftArmUnstack(a, b));
+        expectedOperators.add(new RightArmUnstack(b, a));
         System.out.println("Expected Operators: "+expectedOperators);
         System.out.println("Operator Set: "+operatorSet);
         assertEquals(operatorSet, expectedOperators);
