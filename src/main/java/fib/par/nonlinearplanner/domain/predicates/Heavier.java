@@ -1,7 +1,9 @@
-package fib.par.nonlinearplanner.predicates;
+package fib.par.nonlinearplanner.domain.predicates;
 
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.operators.Operator;
+import fib.par.nonlinearplanner.Domain;
+import fib.par.nonlinearplanner.Predicate;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.Operator;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +12,8 @@ public class Heavier extends Predicate {
     private final Block block1;
     private final Block block2;
 
-    public Heavier(Block block1, Block block2) {
+    public Heavier(Block block1, Block block2, Domain domain) {
+        super(domain);
         this.block1 = block1;
         this.block2 = block2;
     }
@@ -44,7 +47,6 @@ public class Heavier extends Predicate {
 
     @Override
     public Set<Operator> getPreOperators() {
-
         return new HashSet<Operator>();
     }
 }

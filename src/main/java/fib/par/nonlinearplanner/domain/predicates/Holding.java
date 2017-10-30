@@ -1,9 +1,12 @@
-package fib.par.nonlinearplanner.predicates;
+package fib.par.nonlinearplanner.domain.predicates;
 
-import fib.par.nonlinearplanner.Arm;
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.BlocksWorld;
-import fib.par.nonlinearplanner.operators.*;
+import fib.par.nonlinearplanner.Domain;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.Predicate;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.domain.operators.*;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -16,12 +19,13 @@ public class Holding extends Predicate {
 
     private static final String INPUT_NAME = "HOLDING";
 
-    public Holding(Block block, Arm arm) {
+    public Holding(Block block, Arm arm, BlocksWorld domain) {
+        super(domain);
         this.block = block;
         this.arm = arm;
     }
 
-    public static Holding fromString(String string) {
+    public static Holding fromString(String string, BlocksWorld domain) {
         if (!string.startsWith(INPUT_NAME + "(")) {
             throw new IllegalArgumentException("Does not start with " + INPUT_NAME + "(");
         }
@@ -30,7 +34,7 @@ public class Holding extends Predicate {
         String blockName = paramsNames.split(",")[0];
         String armName = paramsNames.split(",")[1];
 
-        return new Holding(BlocksWorld.getBlockFromName(blockName), Arm.fromString(armName));
+        return new Holding(domain.getBlockFromName(blockName), Arm.fromString(armName), domain);
     }
 
     @Override
@@ -67,25 +71,25 @@ public class Holding extends Predicate {
     @Override
     public Set<Operator> getPreOperators() { //pickUp, unstack
         Set<Operator> preOperators = new HashSet<Operator>();
-        List<Block> otherBlocks = new LinkedList<Block>(BlocksWorld.getBlocksList());
+        List<Block> otherBlocks = new LinkedList<Block>(((BlocksWorld) domain).getBlocksList());
         otherBlocks.remove(block);
         for (Block otherBlock : otherBlocks) {
             if (arm.equals(Arm.leftArm)) {
                 if (block.weight == 1) {
-                    preOperators.add(new LeftArmUnstack(block, otherBlock));
+                    preOperators.add(new LeftArmUnstack(block, otherBlock, (BlocksWorld) domain));
                 }
             } else {
-                preOperators.add(new RightArmUnstack(block, otherBlock));
+                preOperators.add(new RightArmUnstack(block, otherBlock, (BlocksWorld) domain));
             }
         }
 
-        for (int i = 1; i <= BlocksWorld.MAX_COLUMNS; i++) {
+        for (int i = 1; i <= ((BlocksWorld) domain).maxColumns; i++) {
             if (arm.equals(Arm.leftArm)) {
                 if (block.weight == 1) {
-                    preOperators.add(new LeftArmPickUp(block, i));
+                    preOperators.add(new LeftArmPickUp(block, i, (BlocksWorld) domain));
                 }
             } else {
-                preOperators.add(new RightArmPickUp(block, i));
+                preOperators.add(new RightArmPickUp(block, i, (BlocksWorld) domain));
             }
         }
         return preOperators;

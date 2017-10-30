@@ -1,7 +1,5 @@
 package fib.par.nonlinearplanner;
 
-import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.predicates.Predicate;
 import fib.par.nonlinearplanner.util.NodeStatus;
 import fib.par.nonlinearplanner.util.StateOperatorTree;
 
@@ -12,21 +10,25 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.tuple.*;
 
-class Planner {
+public class Planner {
     private final State initialState;
     private final State finalState;
-    private State currentState;
-    Plan bestPlan;
+    public Plan bestPlan;
     private StateOperatorTree stateOperatorTree;
     private boolean planningAlgorithmExecuted;
     private Set<Pair<State,NodeStatus>> cancelledStates;
+    private Domain domain;
 
-    public Planner(State initialState, State finalState) {
+    public Planner(State initialState, State finalState, Domain domain) {
         this.initialState = initialState;
         this.finalState = finalState;
-        this.currentState = initialState;
         this.planningAlgorithmExecuted = false;
         this.cancelledStates = new HashSet<>();
+        this.domain = domain;
+    }
+
+    public boolean planWasFound() {
+        return bestPlan != null;
     }
 
     public String generateOutput() {
@@ -66,29 +68,28 @@ class Planner {
         }
     }
 
-    private void executePlan(Plan plan) {
+    private State executePlan(Plan plan) {
+        State currentState = initialState;
         int opNum = 0;
         for(Operator operator: plan.operators) {
             System.out.println(opNum++ +":"+ currentState.simpleRepresentation());
-            currentState.printState();
+            domain.printState(currentState);
             System.out.println("Applying operator "+ operator);
             currentState = operator.execute(currentState);
         }
         System.out.println(opNum + ":" + currentState.simpleRepresentation());
-        currentState.printState();
+        domain.printState(currentState);
+        return currentState;
     }
 
     public boolean verifyPlan(Plan plan) {
         try{
-            executePlan(plan);
+            State endState = executePlan(plan);
+            return endState.equals(finalState);
         } catch (IllegalStateException e)  {
             return false;
         }
-        return isInFinalState();
-    }
 
-    private boolean isInFinalState() {
-        return currentState.equals(finalState);
     }
 
     public void findBestPlanWithRegression(int maxLevel) {
@@ -174,15 +175,7 @@ class Planner {
         return initialStateNode;
     }
 
-    private static boolean regression2(Operator o, Predicate p) {
-        return !o.deleteList.contains(p);
-    }
-
     private static boolean regression(Operator o, Set<Predicate> p) {
         return p.containsAll(o.addList) && o.deleteList.stream().noneMatch(p::contains);
-    }
-
-    public boolean planWasFound() {
-        return bestPlan != null;
     }
 }

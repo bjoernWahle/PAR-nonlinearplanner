@@ -1,7 +1,7 @@
 package fib.par.nonlinearplanner.util;
 
 import fib.par.nonlinearplanner.State;
-import fib.par.nonlinearplanner.operators.Operator;
+import fib.par.nonlinearplanner.Operator;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

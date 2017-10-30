@@ -1,18 +1,16 @@
-package fib.par.nonlinearplanner.operators;
-
-import fib.par.nonlinearplanner.State;
-import fib.par.nonlinearplanner.predicates.Predicate;
+package fib.par.nonlinearplanner;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Operator {
-
+    public final Domain domain;
     public final Set<Predicate> preconditions;
     public final Set<Predicate> addList;
     public final Set<Predicate> deleteList;
 
-    Operator() {
+    public Operator(Domain domain) {
+        this.domain = domain;
         this.preconditions = new HashSet<Predicate>();
         this.addList = new HashSet<Predicate>();
         this.deleteList = new HashSet<Predicate>();

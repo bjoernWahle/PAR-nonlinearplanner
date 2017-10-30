@@ -1,4 +1,4 @@
-package fib.par.nonlinearplanner;
+package fib.par.nonlinearplanner.domain;
 
 public class Arm {
     private final String name;

@@ -1,33 +1,37 @@
-package fib.par.nonlinearplanner.operators;
+package fib.par.nonlinearplanner.domain.operators;
 
-import fib.par.nonlinearplanner.Arm;
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.predicates.*;
+import fib.par.nonlinearplanner.Negation;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.domain.predicates.*;
 
 public class Stack extends Operator {
     private final Block blockToStack;
     private final Block lowerBlock;
     private final Arm arm;
 
-    public Stack(Block blockToStack, Block lowerBlock, Arm arm) {
+    public Stack(Block blockToStack, Block lowerBlock, Arm arm, BlocksWorld domain) {
+        super(domain);
         this.blockToStack = blockToStack;
         this.lowerBlock = lowerBlock;
         this.arm = arm;
 
         Arm otherArm = arm.equals(Arm.leftArm) ? Arm.rightArm : Arm.leftArm;
         // preconditions
-        preconditions.add(new Holding(blockToStack, arm));
-        preconditions.add(new Clear(lowerBlock));
-        preconditions.add(new Heavier(lowerBlock, blockToStack));
-        preconditions.add(new Negation(new Holding(lowerBlock, otherArm)));
+        preconditions.add(new Holding(blockToStack, arm, domain));
+        preconditions.add(new Clear(lowerBlock, domain));
+        preconditions.add(new Heavier(lowerBlock, blockToStack, domain));
+        preconditions.add(new Negation(new Holding(lowerBlock, otherArm, domain), domain));
 
         // add list
-        addList.add(new On(blockToStack, lowerBlock));
-        addList.add(new EmptyArm(arm));
+        addList.add(new On(blockToStack, lowerBlock, domain));
+        addList.add(new EmptyArm(arm, domain));
 
         // delete list
-        deleteList.add(new Clear(lowerBlock));
-        deleteList.add(new Holding(blockToStack, arm));
+        deleteList.add(new Clear(lowerBlock, domain));
+        deleteList.add(new Holding(blockToStack, arm, domain));
     }
 
     @Override

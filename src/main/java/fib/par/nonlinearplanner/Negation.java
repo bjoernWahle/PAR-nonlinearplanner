@@ -1,6 +1,4 @@
-package fib.par.nonlinearplanner.predicates;
-
-import fib.par.nonlinearplanner.operators.Operator;
+package fib.par.nonlinearplanner;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +6,8 @@ import java.util.Set;
 public class Negation extends Predicate {
     public final Predicate predicate;
 
-    public Negation(Predicate predicate) {
+    public Negation(Predicate predicate, Domain domain) {
+        super(domain);
         this.predicate = predicate;
     }
 
