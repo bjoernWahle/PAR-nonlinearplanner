@@ -72,12 +72,12 @@ public class Planner {
         State currentState = initialState;
         int opNum = 0;
         for(Operator operator: plan.operators) {
-            System.out.println(opNum++ +":"+ currentState.simpleRepresentation());
+            System.out.println(opNum++ +":"+ domain.stateRepresentation(currentState));
             domain.printState(currentState);
             System.out.println("Applying operator "+ operator);
             currentState = operator.execute(currentState);
         }
-        System.out.println(opNum + ":" + currentState.simpleRepresentation());
+        System.out.println(opNum + ":" + domain.stateRepresentation(currentState));
         domain.printState(currentState);
         return currentState;
     }
@@ -114,9 +114,9 @@ public class Planner {
         StateOperatorTree tree = new StateOperatorTree(finalState);
         boolean initialStateFound = false;
         StateOperatorTree.Node initialStateNode = null;
-        Set<State> states = new HashSet<State>();
+        Set<State> visitedStates = new HashSet<State>();
         // add final state to the list of already reached states
-        states.add(finalState);
+        visitedStates.add(finalState);
         for(int i = 0; i < maxLevel; i++) {
             if(initialStateFound) break;
             // iterate over levels and create them
@@ -147,7 +147,7 @@ public class Planner {
                         } else if(!operator.isExecutable(childState)) {
                             // operator cannot be executed on the child state (missing prec)
                             status = NodeStatus.OP_PREC_NOT_MET;
-                        } else if(states.contains(childState)) {
+                        } else if(visitedStates.contains(childState)) {
                             // state was already found in the tree
                             status = NodeStatus.REPEATED_STATE;
                         } else {
@@ -156,7 +156,7 @@ public class Planner {
                         StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator);
                         if(status.equals(NodeStatus.VALID)) {
                             node.addChild(child);
-                            states.add(child.getState());
+                            visitedStates.add(child.getState());
                             // if the state is the initial state set initialStateFound to true to stop for loops
                             if(childState.equals(initialState)) {
                                 initialStateFound = true;

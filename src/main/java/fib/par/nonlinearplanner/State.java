@@ -91,18 +91,6 @@ public class State {
         return predicateSet != null ? predicateSet.hashCode() : 0;
     }
 
-    String simpleRepresentation() {
-        StringBuilder str = new StringBuilder("State(Predicates: ");
-        for(Predicate predicate : predicateSet) {
-            if(!(predicate instanceof Heavier || predicate instanceof LightBlock)) {
-                str.append(predicate).append(",");
-            }
-        }
-        str = new StringBuilder(str.substring(0, str.length() - 1));
-        str.append(")");
-        return str.toString();
-    }
-
     Set<Operator> getPossiblePreOperators() {
         Set<Operator> operators = new HashSet<Operator>();
         for(Predicate predicate : predicateSet) {

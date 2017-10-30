@@ -46,6 +46,19 @@ public class BlocksWorld extends Domain {
         return heavierPredicates;
     }
 
+    @Override
+    public String stateRepresentation(State state) {
+        StringBuilder str = new StringBuilder("State(Predicates: ");
+        for(Predicate predicate : state.predicateSet) {
+            if(!(predicate instanceof Heavier || predicate instanceof LightBlock)) {
+                str.append(predicate).append(",");
+            }
+        }
+        str = new StringBuilder(str.substring(0, str.length() - 1));
+        str.append(")");
+        return str.toString();
+    }
+
     public Block getBlockFromName(String name) {
         for(Block block: blocksList) {
             if(Objects.equals(block.name, name)) {
@@ -174,9 +187,9 @@ public class BlocksWorld extends Domain {
         return emptyArms.size() == 0;
     }
 
+    @Override
     public void printState(State state) {
         // print arms
-
         Block leftHeldBlock = getBlockHeldByLeftArm(state);
         String l = leftHeldBlock == null ? "_" : leftHeldBlock.simpleRepresentation();
         Block rightHeldBlock = getBlockHeldByRightArm(state);
