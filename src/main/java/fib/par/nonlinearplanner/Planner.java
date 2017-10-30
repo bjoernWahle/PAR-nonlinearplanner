@@ -2,6 +2,7 @@ package fib.par.nonlinearplanner;
 
 import fib.par.nonlinearplanner.operators.Operator;
 import fib.par.nonlinearplanner.predicates.Predicate;
+import fib.par.nonlinearplanner.util.NodeStatus;
 import fib.par.nonlinearplanner.util.StateOperatorTree;
 
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.tuple.*;
 
 class Planner {
     private final State initialState;
@@ -17,12 +19,14 @@ class Planner {
     Plan bestPlan;
     private StateOperatorTree stateOperatorTree;
     private boolean planningAlgorithmExecuted;
+    private Set<Pair<State,NodeStatus>> cancelledStates;
 
     public Planner(State initialState, State finalState) {
         this.initialState = initialState;
         this.finalState = finalState;
         this.currentState = initialState;
         this.planningAlgorithmExecuted = false;
+        this.cancelledStates = new HashSet<>();
     }
 
     public String generateOutput() {
@@ -37,8 +41,6 @@ class Planner {
                     ",",
                     bestPlan.operators.stream().map(Object::toString).collect(Collectors.toList())
             );
-            // generate discontinued states list
-            List<StateOperatorTree.Node> discontinuedNodeList = stateOperatorTree.getInvalidNodes();
 
             strB.append(numberOfOperators);
             strB.append(System.getProperty("line.separator"));
@@ -49,10 +51,10 @@ class Planner {
             strB.append("---------");
             strB.append(System.getProperty("line.separator"));
 
-            for(StateOperatorTree.Node node :discontinuedNodeList) {
-                strB.append(node.getState().predicateListString());
+            for(Pair<State, NodeStatus> pair:cancelledStates) {
+                strB.append(pair.getLeft().predicateListString());
                 strB.append(System.getProperty("line.separator"));
-                strB.append(node.getStatus().getReason());
+                strB.append(pair.getRight().getReason());
                 strB.append(System.getProperty("line.separator"));
                 strB.append("---------");
                 strB.append(System.getProperty("line.separator"));
@@ -118,7 +120,7 @@ class Planner {
             if(initialStateFound) break;
             // iterate over levels and create them
             // 1. get nodes in current level and select only those that should be continued
-            List<StateOperatorTree.Node> nodeList = tree.getNodesInLevel(i).stream().filter(StateOperatorTree.Node::isValid).collect(Collectors.toList());
+            List<StateOperatorTree.Node> nodeList = tree.getNodesInLevel(i);
             if(nodeList.size() == 0) {
                 break;
             }
@@ -137,28 +139,33 @@ class Planner {
                         State childState = state.applyOperatorReverse(operator);
                         // if the previous state is valid and the operators preconditions are met
                         // add it to the tree with the operator
-                        StateOperatorTree.Node.NodeStatus status;
+                        NodeStatus status;
                         if(!childState.isValid()) {
                             // prior state would be invalid
-                            status = StateOperatorTree.Node.NodeStatus.INVALID_STATE;
+                            status = NodeStatus.INVALID_STATE;
                         } else if(!operator.isExecutable(childState)) {
                             // operator cannot be executed on the child state (missing prec)
-                            status = StateOperatorTree.Node.NodeStatus.OP_PREC_NOT_MET;
+                            status = NodeStatus.OP_PREC_NOT_MET;
                         } else if(states.contains(childState)) {
                             // state was already found in the tree
-                            status = StateOperatorTree.Node.NodeStatus.REPEATED_STATE;
+                            status = NodeStatus.REPEATED_STATE;
                         } else {
-                            status = StateOperatorTree.Node.NodeStatus.VALID;
+                            status = NodeStatus.VALID;
                         }
-                        StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator, status);
-                        node.addChild(child);
-                        states.add(child.getState());
-                        // if the state is the initial state set initialStateFound to true to stop for loops
-                        if(status == StateOperatorTree.Node.NodeStatus.VALID && childState.equals(initialState)) {
-                            initialStateFound = true;
-                            initialStateNode = child;
-                            System.out.println("Initial state found in level "+(i+1)+".");
+                        StateOperatorTree.Node child = new StateOperatorTree.Node(childState, operator);
+                        if(status.equals(NodeStatus.VALID)) {
+                            node.addChild(child);
+                            states.add(child.getState());
+                            // if the state is the initial state set initialStateFound to true to stop for loops
+                            if(childState.equals(initialState)) {
+                                initialStateFound = true;
+                                initialStateNode = child;
+                                System.out.println("Initial state found in level "+(i+1)+".");
+                            }
+                        } else {
+                            cancelledStates.add(new ImmutablePair<>(state, status));
                         }
+
                     }
                 }
             }

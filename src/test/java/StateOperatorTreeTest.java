@@ -15,8 +15,8 @@ class StateOperatorTreeTest {
         RightArmPickUp op = new RightArmPickUp(new Block("A", 2), 1);
         StateOperatorTree tree = new StateOperatorTree(state);
         StateOperatorTree.Node root = tree.getRoot();
-        root.addChild(new StateOperatorTree.Node(state,op, StateOperatorTree.Node.NodeStatus.VALID));
-        root.addChild(new StateOperatorTree.Node(state,op, StateOperatorTree.Node.NodeStatus.VALID));
+        root.addChild(new StateOperatorTree.Node(state,op));
+        root.addChild(new StateOperatorTree.Node(state,op));
 
         // execute & validate
         assertEquals(3, tree.getNodesCount());

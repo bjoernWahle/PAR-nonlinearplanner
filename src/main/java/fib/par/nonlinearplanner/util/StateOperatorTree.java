@@ -24,22 +24,6 @@ public class StateOperatorTree {
         return count;
     }
 
-    public List<Node> getInvalidNodes() {
-        return _getInvalidNodes(root);
-    }
-
-    private List<Node> _getInvalidNodes(Node node) {
-        List<Node> nodeList = new LinkedList<Node>();
-        if(!node.isValid()) {
-            nodeList.add(node);
-        } else {
-            for(Node cNode: node.children) {
-                nodeList.addAll(_getInvalidNodes(cNode));
-            }
-        }
-        return nodeList;
-    }
-
     public Node getRoot() {
         return root;
     }
@@ -66,47 +50,19 @@ public class StateOperatorTree {
         private Operator operator;
         private final List<Node> children;
         private Node parent;
-        private final NodeStatus status;
-
-        public boolean isValid() {
-            return status == NodeStatus.VALID;
-        }
-
-        public NodeStatus getStatus() {
-            return status;
-        }
-
-        public enum NodeStatus {
-            VALID("Node is valid"),
-            REPEATED_STATE("Repeated state"),
-            INVALID_STATE("State is not valid"),
-            OP_PREC_NOT_MET("Operator preconditions are not fulfilled.");
-
-            final String reason;
-
-            NodeStatus(String reason) {
-                this.reason = reason;
-            }
-
-            public String getReason() {
-                return reason;
-            }
-        }
 
         public boolean isRoot() {
             return parent == null;
         }
 
-        public Node(State state, Operator operator, NodeStatus status) {
+        public Node(State state, Operator operator) {
             this.state = state;
-            this.status = status;
             this.operator = operator;
             this.children = new ArrayList<Node>();
         }
 
         Node(State state) {
             this.state = state;
-            this.status = NodeStatus.VALID;
             this.children = new ArrayList<Node>();
         }
 
