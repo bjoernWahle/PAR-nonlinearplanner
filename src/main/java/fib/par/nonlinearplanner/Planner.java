@@ -18,6 +18,7 @@ public class Planner {
     private boolean planningAlgorithmExecuted;
     private Set<Pair<State,NodeStatus>> cancelledStates;
     private Domain domain;
+    private boolean verbose;
 
     public Planner(State initialState, State finalState, Domain domain) {
         this.initialState = initialState;
@@ -25,6 +26,7 @@ public class Planner {
         this.planningAlgorithmExecuted = false;
         this.cancelledStates = new HashSet<>();
         this.domain = domain;
+        this.verbose = false;
     }
 
     public boolean planWasFound() {
@@ -72,13 +74,17 @@ public class Planner {
         State currentState = initialState;
         int opNum = 0;
         for(Operator operator: plan.operators) {
-            System.out.println(opNum++ +":"+ domain.stateRepresentation(currentState));
-            domain.printState(currentState);
-            System.out.println("Applying operator "+ operator);
+            if(this.verbose) {
+                System.out.println(opNum++ + ":" + domain.stateRepresentation(currentState));
+                domain.printState(currentState);
+                System.out.println("Applying operator " + operator);
+            }
             currentState = operator.execute(currentState);
         }
-        System.out.println(opNum + ":" + domain.stateRepresentation(currentState));
-        domain.printState(currentState);
+        if(this.verbose) {
+            System.out.println(opNum + ":" + domain.stateRepresentation(currentState));
+            domain.printState(currentState);
+        }
         return currentState;
     }
 
@@ -161,7 +167,9 @@ public class Planner {
                             if(childState.equals(initialState)) {
                                 initialStateFound = true;
                                 initialStateNode = child;
-                                System.out.println("Initial state found in level "+(i+1)+".");
+                                if(this.verbose) {
+                                    System.out.println("Initial state found in level " + (i + 1) + ".");
+                                }
                             }
                         } else {
                             cancelledStates.add(new ImmutablePair<>(state, status));
