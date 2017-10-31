@@ -18,6 +18,7 @@ public class Planner {
     private boolean planningAlgorithmExecuted;
     private Set<Pair<State,NodeStatus>> cancelledStates;
     private Domain domain;
+    private boolean verbose;
 
     public Planner(State initialState, State finalState, Domain domain) {
         this.initialState = initialState;
@@ -25,6 +26,7 @@ public class Planner {
         this.planningAlgorithmExecuted = false;
         this.cancelledStates = new HashSet<>();
         this.domain = domain;
+        this.verbose = false;
     }
 
     public boolean planWasFound() {
@@ -72,13 +74,17 @@ public class Planner {
         State currentState = initialState;
         int opNum = 0;
         for(Operator operator: plan.operators) {
-            System.out.println(opNum++ +":"+ domain.stateRepresentation(currentState));
-            domain.printState(currentState);
-            System.out.println("Applying operator "+ operator);
+            if(this.verbose) {
+                System.out.println(opNum++ + ":" + domain.stateRepresentation(currentState));
+                domain.printState(currentState);
+                System.out.println("Applying operator " + operator);
+            }
             currentState = operator.execute(currentState);
         }
-        System.out.println(opNum + ":" + domain.stateRepresentation(currentState));
-        domain.printState(currentState);
+        if(this.verbose) {
+            System.out.println(opNum + ":" + domain.stateRepresentation(currentState));
+            domain.printState(currentState);
+        }
         return currentState;
     }
 
@@ -92,8 +98,15 @@ public class Planner {
 
     }
 
+    /**
+     * This method finds the optimal plan to arrive in the goal state starting from the initial state if such plan exists.
+     * Internally it is using the method buildStateTree() to create a tree whose nodes are pairs of a state and a operator.
+     * The best plan will finally collected by iterating through the parent nodes of the node containing the initial state.
+     * The tree won't be builder further than the passed maxLevel.
+     * @param maxLevel : maximum level of the tree before stopping
+     */
     public void findBestPlanWithRegression(int maxLevel) {
-        StateOperatorTree.Node initialStateNode = buildStateTree(maxLevel, initialState, finalState);
+        StateOperatorTree.Node initialStateNode = buildStateTree(maxLevel);
         this.planningAlgorithmExecuted = true;
         // if initial state node is null, the algorithm did not find a plan for the problem in the maximum number of
         // levels
@@ -110,7 +123,18 @@ public class Planner {
         bestPlan = new Plan(operatorList);
     }
 
-    private StateOperatorTree.Node buildStateTree(int maxLevel, State initialState, State finalState) {
+
+    /**
+     * Builds a state operator tree advancing from level to level. In each level all the possible operators to arrive in
+     * parent state are tested with the regression function and if they are usable and their prior state achieved by
+     * applying the operator reversely to the parent state is valid, the prior state will be added to the child nodes.
+     * The algorithm keeps track of already visited states to cancel these nodes as they would create identical subtrees.
+     * When the initial state is found, the method will return its node.
+     * The outer for loop is stopped when the passed maxLevel is reached.
+     * @param maxLevel : maximum level of the tree before stopping
+     * @return Node : Node with initial state and the first operator to be applied
+     */
+    private StateOperatorTree.Node buildStateTree(int maxLevel) {
         StateOperatorTree tree = new StateOperatorTree(finalState);
         boolean initialStateFound = false;
         StateOperatorTree.Node initialStateNode = null;
@@ -161,7 +185,9 @@ public class Planner {
                             if(childState.equals(initialState)) {
                                 initialStateFound = true;
                                 initialStateNode = child;
-                                System.out.println("Initial state found in level "+(i+1)+".");
+                                if(this.verbose) {
+                                    System.out.println("Initial state found in level " + (i + 1) + ".");
+                                }
                             }
                         } else {
                             cancelledStates.add(new ImmutablePair<>(state, status));
@@ -175,7 +201,16 @@ public class Planner {
         return initialStateNode;
     }
 
-    private static boolean regression(Operator o, Set<Predicate> p) {
-        return p.containsAll(o.addList) && o.deleteList.stream().noneMatch(p::contains);
+    /**
+     * Implementation of the regression function discussed in class.
+     * Returns true if the set of predicates ps contains all predicates of the add list of the operator o
+     * and the delete list of the operator o does not contain any of the predicates in the set of predicates ps.
+     * Otherways it returns false.
+     * @param o : Operator
+     * @param ps : Set of Predicates
+     * @return true if operator can be applied to achieve the set of predicates ps, else false
+     */
+    private static boolean regression(Operator o, Set<Predicate> ps) {
+        return ps.containsAll(o.addList) && o.deleteList.stream().noneMatch(ps::contains);
     }
 }
