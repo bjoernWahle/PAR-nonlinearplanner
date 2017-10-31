@@ -1,10 +1,11 @@
-package fib.par.nonlinearplanner.predicates;
+package fib.par.nonlinearplanner.domain.predicates;
 
-import fib.par.nonlinearplanner.Arm;
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.BlocksWorld;
-import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.operators.Stack;
+import fib.par.nonlinearplanner.Predicate;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.domain.operators.Stack;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class On extends Predicate {
 
     private static final String INPUT_NAME = "ON";
 
-    public static On fromString(String string) {
+    public static On fromString(String string, BlocksWorld domain) {
         if(!string.startsWith(INPUT_NAME+"(")) {
             throw new IllegalArgumentException("Does not start with "+INPUT_NAME+"(");
         }
@@ -23,10 +24,11 @@ public class On extends Predicate {
         blockNames = blockNames.substring(0, blockNames.length()-1);
         String[] blocksStrings = blockNames.split(",");
 
-        return new On(BlocksWorld.getBlockFromName(blocksStrings[0]),BlocksWorld.getBlockFromName(blocksStrings[1]));
+        return new On(domain.getBlockFromName(blocksStrings[0]),domain.getBlockFromName(blocksStrings[1]), domain);
     }
 
-    public On(Block b, Block a) {
+    public On(Block b, Block a, BlocksWorld domain) {
+        super(domain);
         this.upperBlock = b;
         this.lowerBlock = a;
     }
@@ -66,9 +68,9 @@ public class On extends Predicate {
     public Set<Operator> getPreOperators() {
         Set<Operator> preOperators = new HashSet<Operator>();
         if(upperBlock.weight == 1){
-            preOperators.add(new Stack(upperBlock, lowerBlock, Arm.leftArm));
+            preOperators.add(new Stack(upperBlock, lowerBlock, Arm.leftArm, (BlocksWorld) domain));
         }
-        preOperators.add(new Stack(upperBlock, lowerBlock, Arm.rightArm));
+        preOperators.add(new Stack(upperBlock, lowerBlock, Arm.rightArm, (BlocksWorld) domain));
         return preOperators;
     }
 }

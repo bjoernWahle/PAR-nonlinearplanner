@@ -1,32 +1,35 @@
-package fib.par.nonlinearplanner.operators;
+package fib.par.nonlinearplanner.domain.operators;
 
-import fib.par.nonlinearplanner.Arm;
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.predicates.Clear;
-import fib.par.nonlinearplanner.predicates.EmptyArm;
-import fib.par.nonlinearplanner.predicates.Holding;
-import fib.par.nonlinearplanner.predicates.On;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.domain.predicates.Clear;
+import fib.par.nonlinearplanner.domain.predicates.EmptyArm;
+import fib.par.nonlinearplanner.domain.predicates.Holding;
+import fib.par.nonlinearplanner.domain.predicates.On;
 
 public class RightArmUnstack extends Operator {
     private final Block blockToUnstack;
     private final Block lowerBlock;
 
-    public RightArmUnstack(Block blockToUnstack, Block lowerBlock) {
+    public RightArmUnstack(Block blockToUnstack, Block lowerBlock, BlocksWorld domain) {
+        super(domain);
         this.blockToUnstack = blockToUnstack;
         this.lowerBlock = lowerBlock;
 
         // preconditions
-        preconditions.add(new On(blockToUnstack, lowerBlock));
-        preconditions.add(new Clear(blockToUnstack));
-        preconditions.add(new EmptyArm(Arm.rightArm));
+        preconditions.add(new On(blockToUnstack, lowerBlock, domain));
+        preconditions.add(new Clear(blockToUnstack, domain));
+        preconditions.add(new EmptyArm(Arm.rightArm, domain));
 
         // add list
-        addList.add(new Clear(lowerBlock));
-        addList.add(new Holding(blockToUnstack, Arm.rightArm));
+        addList.add(new Clear(lowerBlock, domain));
+        addList.add(new Holding(blockToUnstack, Arm.rightArm, domain));
 
         // delete list
-        deleteList.add(new On(blockToUnstack, lowerBlock));
-        deleteList.add(new EmptyArm(Arm.rightArm));
+        deleteList.add(new On(blockToUnstack, lowerBlock, domain));
+        deleteList.add(new EmptyArm(Arm.rightArm, domain));
     }
 
     @Override

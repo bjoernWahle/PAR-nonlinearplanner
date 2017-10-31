@@ -1,7 +1,10 @@
-package fib.par.nonlinearplanner.operators;
+package fib.par.nonlinearplanner.domain.operators;
 
-import fib.par.nonlinearplanner.*;
-import fib.par.nonlinearplanner.predicates.*;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.domain.predicates.*;
 
 public class LeftArmPickUp extends Operator {
     private final Block blockToPickUp;
@@ -25,23 +28,23 @@ public class LeftArmPickUp extends Operator {
         return result;
     }
 
-    public LeftArmPickUp(Block blockToPickUp, int usedColsBefore) {
-        super();
+    public LeftArmPickUp(Block blockToPickUp, int usedColsBefore, BlocksWorld domain) {
+        super(domain);
         this.blockToPickUp = blockToPickUp;
         this.usedColsBefore = usedColsBefore;
         // set preconditions
-        preconditions.add(new OnTable(blockToPickUp));
-        preconditions.add(new Clear(blockToPickUp));
-        preconditions.add(new LightBlock(blockToPickUp));
-        preconditions.add(new EmptyArm(Arm.leftArm));
+        preconditions.add(new OnTable(blockToPickUp, domain));
+        preconditions.add(new Clear(blockToPickUp, domain));
+        preconditions.add(new LightBlock(blockToPickUp, domain));
+        preconditions.add(new EmptyArm(Arm.leftArm, domain));
         // set addList
-        addList.add(new Holding(blockToPickUp, Arm.leftArm));
+        addList.add(new Holding(blockToPickUp, Arm.leftArm, domain));
 
-        addList.add(new UsedColumnsNum(usedColsBefore-1));
+        addList.add(new UsedColumnsNum(usedColsBefore-1, domain));
         // set deleteList
-        deleteList.add(new OnTable(blockToPickUp));
-        deleteList.add(new EmptyArm(Arm.leftArm));
-        deleteList.add(new UsedColumnsNum(usedColsBefore));
+        deleteList.add(new OnTable(blockToPickUp, domain));
+        deleteList.add(new EmptyArm(Arm.leftArm, domain));
+        deleteList.add(new UsedColumnsNum(usedColsBefore, domain));
     }
 
     @Override

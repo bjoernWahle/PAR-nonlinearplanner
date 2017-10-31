@@ -1,0 +1,1465 @@
+8
+402
+LeftArmUnstack(F,D),RightArmUnstack(A,B),Stack(A,D,R),RightArmUnstack(B,C),Leave(B,R),RightArmPickUp(C),Stack(C,B,R),Stack(F,A,L)
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),On(C,B),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),Clear(C),OnTable(A),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(C),Clear(A),Holding(A,L),On(F,B),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(C),On(A,B),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(3),Holding(B,R),Clear(C),OnTable(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(A),On(F,B),Clear(F),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),On(A,B),Clear(F),OnTable(F),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(A),Clear(F),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),Clear(C),OnTable(A),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),On(C,B),Clear(C),Clear(A),Holding(A,R),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),On(C,B),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),Clear(C),OnTable(C),Clear(A),Holding(A,R),On(F,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(C),Clear(A),Holding(A,L),On(F,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(C),On(A,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(3),Holding(B,R),Clear(C),OnTable(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(A),On(F,B),Clear(F),OnTable(D),Clear(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(A),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),On(A,B),Clear(F),OnTable(F),OnTable(D),Clear(D),On(C,A)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),On(B,A),Clear(F),On(F,C),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),Holding(A,L),Clear(F),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),OnTable(A),Clear(F),On(F,C),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),OnTable(A),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),On(A,C),Clear(F),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),On(D,B),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),On(F,B),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(F),OnTable(F),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),On(B,A),Clear(F),OnTable(F),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(A),Clear(F),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Clear(F),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),On(F,B),Clear(F),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),On(A,B),Clear(F),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(1),On(C,B),Clear(A),Holding(A,L),Holding(D,R),Clear(F),On(F,C),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),EmptyArm(L),Holding(B,R),Clear(F),On(F,C),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),On(F,A),On(C,B),On(A,C),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+On(A,D),On(B,C),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,B),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),On(D,A),On(A,C),Clear(F)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(F),On(F,C),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Holding(C,R),On(F,D),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),OnTable(C),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),OnTable(C),Clear(A),Holding(A,L),Holding(D,R),Clear(F),On(F,C),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),On(B,A),Clear(F),On(F,C),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(F),OnTable(F),OnTable(D),On(C,A)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(B,D),Holding(A,L),Clear(F),On(F,C),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(L),On(F,A),OnTable(C),On(A,C),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),On(C,B),Clear(A),Holding(A,L),Holding(D,R),Clear(F),On(F,C),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),EmptyArm(L),Holding(B,R),Clear(F),On(F,C),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),On(F,A),On(C,B),On(A,C),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+On(A,D),On(B,C),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,B),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),On(D,A),On(A,C),Clear(F)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(F),On(F,C),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Holding(C,R),On(F,D),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),OnTable(C),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),OnTable(C),Clear(A),Holding(A,L),Holding(D,R),Clear(F),On(F,C),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),On(B,A),Clear(F),On(F,C),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(F),OnTable(F),OnTable(D),On(C,A)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(B,D),Holding(A,L),Clear(F),On(F,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(L),On(F,A),OnTable(C),On(A,C),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(C),Clear(A),On(A,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(C),Clear(A),OnTable(A),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(B,R),Clear(C),OnTable(C),Clear(A),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),On(C,B),Clear(C),Clear(A),OnTable(A),Holding(D,R),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(A),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),Clear(C),OnTable(C),Clear(A),OnTable(A),Holding(D,R),On(F,B),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(A,B),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),Clear(C),OnTable(C),Clear(A),On(A,B),Holding(D,R),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(A),On(F,B),Clear(F),OnTable(D),Clear(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),On(A,B),Clear(F),OnTable(F),OnTable(D),Clear(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(A),Clear(F),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(F,B),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(C),Clear(A),OnTable(A),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(C),Clear(A),On(A,B),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(A),On(F,B),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(A,B),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),On(F,B),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(F,D),On(C,B),Clear(C),Clear(A),Holding(A,R),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(F,D),On(C,B),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),On(F,A),Clear(C),OnTable(C),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),Holding(A,L),Holding(D,R),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+Clear(B),On(C,D),UsedColumnsNum(2),Holding(B,R),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),On(F,D),Clear(C),OnTable(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),Clear(C),Clear(F),OnTable(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(C),On(D,A),OnTable(A),Clear(F)
+Repeated state
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(F,A),On(C,B),Clear(C),OnTable(A),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),Clear(C),OnTable(C),Clear(A),Holding(A,L),Holding(D,R),On(F,B),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),On(A,B),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),On(B,A),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(F,A),Clear(C),OnTable(C),On(A,B),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),On(A,B),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(C),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(F),OnTable(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(A,C),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),On(B,A),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(B,R),OnTable(C),Clear(A),OnTable(A),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),On(F,D),Clear(C),OnTable(C),Clear(A),Holding(A,R),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),OnTable(A),On(F,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(A,B),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(B,R),OnTable(C),Clear(A),On(A,C),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),On(F,D),Clear(C),OnTable(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(A),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(A,C),On(F,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(A),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Clear(F),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(C),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),Clear(F),OnTable(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(A,C),Clear(F),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(A),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Clear(F),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(A),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),On(F,D),Clear(C),OnTable(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(A,B),Clear(F),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(A,C),On(F,B),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),On(B,A),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),On(F,B),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(F,D),On(C,B),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),Clear(F),On(C,B),Clear(C),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),On(F,A),Clear(C),OnTable(C),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),Holding(A,L),Holding(D,R),Clear(F),OnTable(F),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),Clear(C),Clear(F),OnTable(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),On(F,B),Clear(F),OnTable(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),On(F,D),Clear(C),OnTable(C),Clear(A),Holding(A,L),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),On(B,A),On(F,B),Clear(F),OnTable(D)
+State is not valid
+---------
+Clear(B),On(C,D),UsedColumnsNum(2),Holding(B,R),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(F,A),Clear(C),OnTable(C),On(A,B),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),On(A,B),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(F,A),On(C,B),Clear(C),OnTable(A),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(C),On(D,A),OnTable(A),Clear(F)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),Clear(C),OnTable(C),Clear(A),Holding(A,L),Holding(D,R),On(F,B),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),OnTable(A),Clear(F),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),Holding(A,L),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(C,B),Clear(A),Holding(A,R),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),On(A,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),Holding(A,L),On(F,B),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),On(A,C),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),Holding(A,L),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),On(F,A),OnTable(C),On(A,C),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),On(F,B),Clear(F),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),On(D,B),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),OnTable(A),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),On(A,C),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Holding(C,R),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),OnTable(C),Clear(A),Holding(A,R),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),OnTable(A),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),OnTable(C),On(A,C),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(A),Clear(F),On(F,C),OnTable(D),Clear(D),On(C,A)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Holding(C,R),Clear(C),Clear(A),Holding(A,L),Clear(F),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),OnTable(A),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,A),OnTable(C),On(A,C),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(A),Clear(F),On(F,C),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),Holding(A,L),On(F,B),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),Holding(A,L),Clear(F),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),On(A,C),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),On(F,B),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),On(A,B),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),On(F,A),OnTable(C),On(A,C),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),Holding(A,L),Clear(F),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),OnTable(A),Clear(F),On(F,C),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),OnTable(A),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),On(A,C),Clear(F),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(A,L),Clear(F),On(F,C),On(D,B),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(R),On(C,B),Clear(A),On(D,F),Holding(A,L),On(F,C),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(R),On(C,B),On(D,A),On(A,C),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),On(F,C),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(1),On(C,B),Clear(A),Holding(F,L),Holding(A,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),On(A,C),On(D,F),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(1),On(C,B),Clear(A),Holding(A,L),Holding(F,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),On(C,B),Clear(A),On(D,F),Holding(A,R),On(F,C),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),On(D,F),Holding(A,L),OnTable(F),Clear(D)
+State is not valid
+---------
+Clear(B),On(B,C),UsedColumnsNum(2),OnTable(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Holding(C,R),Clear(C),On(D,A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+Clear(B),On(B,C),UsedColumnsNum(2),OnTable(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(B,F),Holding(A,L),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(D,F),Holding(A,L),On(F,C),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(A),On(B,F),Holding(A,R),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),On(A,C),On(B,A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),On(D,A),On(A,C),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(B,F),On(F,C),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(R),On(C,B),Clear(A),On(D,F),Holding(A,L),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(R),On(C,B),On(D,A),On(A,C),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(1),On(C,B),Clear(A),Holding(F,L),Holding(A,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(1),On(C,B),Clear(A),Holding(A,L),Holding(F,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),On(C,B),Clear(A),On(D,F),Holding(A,R),On(F,C),Clear(D)
+Repeated state
+---------
+Clear(B),On(B,C),UsedColumnsNum(2),OnTable(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Holding(C,R),Clear(C),On(D,A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),On(D,F),Holding(A,L),OnTable(F),Clear(D)
+Repeated state
+---------
+Clear(B),On(B,C),UsedColumnsNum(2),OnTable(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(B,F),Holding(A,L),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(D,F),Holding(A,L),On(F,C),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(A),On(B,F),Holding(A,R),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),On(A,C),On(B,A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),On(D,A),On(A,C),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),On(C,B),Clear(C),Clear(A),OnTable(A),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),Clear(C),OnTable(C),Clear(A),On(A,B),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(F,B),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(A),On(F,B),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(A,B),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(A),On(D,F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(F,B),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(A),On(F,B),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(A,B),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(A),On(D,F),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),On(F,B),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),On(D,A),On(A,B),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),Clear(C),Clear(A),Holding(A,R),On(F,B),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),Clear(A),On(D,F),Holding(A,L),OnTable(F),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),On(C,F),Holding(B,R),Clear(C),Clear(A),Holding(A,L),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),Clear(C),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(D,F),Holding(A,L),On(F,B),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(C,B),On(D,A),Clear(C),OnTable(A),Holding(F,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Clear(C),OnTable(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Clear(C),OnTable(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),Clear(C),Clear(A),Holding(A,R),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),On(D,F),On(F,C),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),Holding(F,L),Clear(F),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(C),On(B,F),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),On(B,A),Holding(F,L),Clear(F),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),On(D,B),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(R),On(F,D),Clear(C),Clear(A),Holding(A,L),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),On(B,F),OnTable(F),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),On(B,A),OnTable(F),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(A,C),On(D,F),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,B),Holding(F,L),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Clear(C),OnTable(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Clear(C),OnTable(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),Clear(C),Clear(A),Holding(A,R),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(F),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(A),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),Clear(C),Clear(A),Holding(A,R),On(F,B),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),On(F,B),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(D,F),Holding(A,L),On(F,B),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),Clear(A),On(D,F),Holding(A,L),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),On(F,B),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),On(D,A),On(A,B),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),On(C,F),Holding(B,R),Clear(C),Clear(A),Holding(A,L),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(C,B),On(D,A),Clear(C),OnTable(A),Holding(F,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),Clear(C),OnTable(A),On(D,F),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),Clear(C),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(F),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(B,F),On(F,C),OnTable(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),Clear(F),On(F,C),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),OnTable(C),Clear(A),On(A,C),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),Clear(F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(A),OnTable(A),Clear(F),On(F,C),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),Clear(F),On(F,C),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(A),On(A,C),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),On(B,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(F,B),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),On(F,B),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(A),OnTable(A),Clear(F)
+State is not valid
+---------
+OnTable(B),On(A,D),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),Clear(F),OnTable(F)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(F,B),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),Clear(A),On(A,B),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),Clear(F),On(F,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),Holding(C,R),On(F,D),Clear(C),Clear(A),OnTable(A),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(F,D),OnTable(C),Clear(A),On(A,C),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),Clear(F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(A),OnTable(A),Clear(F),On(F,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),OnTable(C),Clear(A),OnTable(A),Holding(D,R),Clear(F),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),OnTable(C),Clear(A),On(A,C),Holding(D,R),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(F),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(B,F),OnTable(F),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),Clear(A),OnTable(A),OnTable(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(C,B),Clear(A),On(A,C),Holding(D,R),Clear(F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(A),On(A,C),Holding(D,R),On(F,B),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),Clear(F),On(F,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(A),On(A,C),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(C,B),Clear(A),OnTable(A),Holding(D,R),Clear(F),On(F,C),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),OnTable(C),Clear(A),Clear(F),On(F,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),Holding(C,R),On(F,D),Clear(C),Clear(A),On(A,B),Clear(F),OnTable(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(L),Holding(B,R),On(F,D),OnTable(C),Clear(A),On(A,C),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),On(B,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),Clear(F),OnTable(F)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(A),OnTable(A),Clear(F)
+Repeated state
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),On(F,B),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(A),On(A,B),Holding(D,R),Clear(F),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(A),On(F,B),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(A,B),OnTable(F),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),OnTable(A),On(D,F),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(C,R),On(F,D),Clear(C),Clear(A),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(A),Holding(F,R),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(B,F),On(F,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),OnTable(C),Clear(A),On(A,C),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,C),On(B,D),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(A),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(A),On(A,C),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),OnTable(C),Clear(A),Holding(D,R),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),On(C,B),Clear(A),On(A,C),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),On(A,F),EmptyArm(L),On(C,B),Clear(A),Holding(D,R),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(D,F),On(F,C)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(B,F),Holding(A,L),On(F,C),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(D,F),Holding(A,L),On(F,C),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),On(A,C),On(B,A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),On(D,A),On(A,C),Holding(F,L),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(C,R),On(F,D),Clear(C),Clear(A),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(B,F),On(F,C),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),OnTable(C),Clear(A),On(A,C),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(A),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(A),On(A,C),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),OnTable(C),Clear(A),Holding(D,R),On(F,C),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,C),On(B,D),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),On(C,B),Clear(A),On(A,C),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),On(A,F),EmptyArm(L),On(C,B),Clear(A),Holding(D,R),On(F,C),Clear(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(D,F),On(F,C)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(R),On(C,B),Clear(A),On(D,F),Holding(A,L),On(F,C),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(R),On(C,B),On(D,A),On(A,C),Holding(F,L),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(1),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),On(D,A),On(F,C),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),On(A,C),On(D,F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(R),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(C),Clear(A),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(B,F),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),Clear(A),OnTable(A),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),On(C,B),Clear(C),Clear(A),Holding(D,R),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),Holding(B,R),Clear(C),OnTable(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),Clear(C),OnTable(C),Clear(A),On(A,B),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(F,B),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),EmptyArm(R),Clear(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(B,R),On(F,D),Clear(C),OnTable(C),Clear(A),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),OnTable(A),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),Holding(B,R),Clear(C),Clear(A),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),On(D,F),OnTable(F)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(C),Clear(A),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(F,B),OnTable(D)
+State is not valid
+---------
+Clear(B),On(C,D),UsedColumnsNum(2),Holding(B,R),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),Clear(A),On(A,B),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Clear(C),OnTable(C),Clear(A),Holding(D,R),On(F,B),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(1),On(C,F),EmptyArm(L),EmptyArm(R),On(F,A),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(1),EmptyArm(R),Holding(F,L),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),On(B,F),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),Holding(C,R),Clear(C),On(B,A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),Clear(C),OnTable(C),Clear(A),Holding(F,R),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),EmptyArm(R),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(C),Clear(A),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(3),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(B,F),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),Clear(A),OnTable(A),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(1),On(C,F),EmptyArm(L),EmptyArm(R),On(F,A),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),On(B,C),UsedColumnsNum(1),EmptyArm(R),Holding(F,L),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),EmptyArm(L),Holding(C,R),On(F,A),Clear(C),On(B,F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),Holding(C,R),Clear(C),On(B,A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(B,F),On(F,C),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(F,B),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),On(C,B),Clear(C),Clear(A),Holding(F,R),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),Clear(A),On(A,B),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),Clear(C),OnTable(C),Clear(A),On(A,B),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(B,R),On(F,D),Clear(C),OnTable(C),Clear(A),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),EmptyArm(R),Clear(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),Clear(A),On(D,F),OnTable(F)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),Holding(B,R),Clear(C),OnTable(C),Clear(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Clear(C),OnTable(C),Clear(A),Holding(D,R),On(F,B),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),Holding(B,R),Clear(C),Clear(A),OnTable(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),On(C,B),Clear(C),Clear(A),Holding(D,R),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(C,D),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),Clear(A),On(F,B),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,B),Clear(C),Clear(A),OnTable(A),Holding(F,L),Holding(D,R),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(F,D),On(C,B),Clear(C),Clear(A),OnTable(D)
+Repeated state
+---------
+Clear(B),On(C,D),UsedColumnsNum(2),Holding(B,R),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),OnTable(F),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),Clear(C),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),OnTable(F),OnTable(D),Clear(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(A),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),Clear(A),On(D,F),Holding(A,L),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(R),Clear(C),Clear(A),Holding(A,L),On(F,B),OnTable(D),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),Clear(C),On(F,B),OnTable(D),Clear(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),Clear(C),OnTable(A),On(D,F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(C),On(D,A),OnTable(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D),On(C,A)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),On(D,A),On(A,B),Holding(F,L),Clear(F),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),Clear(A),On(D,F),Holding(A,L),On(F,B),Clear(D)
+Operator preconditions are not fulfilled.
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),Holding(B,R),Clear(C),Holding(F,L),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),On(C,F),EmptyArm(L),Holding(B,R),On(F,A),Clear(C),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Holding(C,R),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(1),On(C,F),Clear(C),Clear(A),Holding(A,L),Holding(D,R),On(F,B),Clear(D)
+State is not valid
+---------
+On(A,D),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),Clear(C),On(B,F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),OnTable(F),OnTable(D),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(1),On(C,F),Holding(B,R),On(F,D),Clear(C),Clear(A),Holding(A,L),OnTable(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(C),On(B,F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),Holding(F,L),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),On(F,A),Clear(C),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),On(A,C),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(C),On(B,A),OnTable(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(R),On(F,D),Clear(C),Clear(A),Holding(A,L),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),On(D,F),On(F,C),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(F),Clear(D)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(B,R),OnTable(C),Clear(A),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(A,C),On(D,F),OnTable(F),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(2),Clear(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,B),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+On(B,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(F,C),OnTable(D),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),On(B,A),Holding(F,L),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Clear(C),OnTable(A),Holding(F,L),Holding(D,R),Clear(F),Clear(D),On(C,A)
+State is not valid
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(2),Clear(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),Clear(C),Clear(A),Holding(A,L),Holding(D,R),OnTable(F),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(C),On(B,A),Holding(F,R),Clear(F),OnTable(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),On(F,B),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Clear(C),Holding(F,R),Clear(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(F,D),Clear(C),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),On(F,B),OnTable(D),Clear(D)
+State is not valid
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),Clear(C),On(B,F),OnTable(F),OnTable(D),On(C,A)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+State is not valid
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),On(D,B),Clear(D)
+State is not valid
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+State is not valid
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(C,F),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),On(C,F),EmptyArm(L),Holding(B,R),On(F,A),Clear(C),OnTable(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(1),Holding(B,R),Clear(C),Holding(F,L),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),Holding(C,R),Clear(C),Clear(A),OnTable(A),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),OnTable(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),EmptyArm(L),OnTable(C),Clear(A),On(A,C),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(3),On(A,F),EmptyArm(L),EmptyArm(R),OnTable(C),Clear(A),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(1),On(C,F),Clear(C),Clear(A),Holding(A,L),Holding(D,R),On(F,B),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(1),On(C,F),Holding(B,R),On(F,D),Clear(C),Clear(A),Holding(A,L),OnTable(D)
+Repeated state
+---------
+On(A,D),UsedColumnsNum(1),EmptyArm(L),EmptyArm(R),On(F,A),On(C,B),Clear(C),On(B,F),OnTable(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),EmptyArm(R),On(F,D),Clear(C),Clear(A),Holding(A,L),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),On(A,C),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),On(C,B),Clear(A),On(A,C),Holding(F,R),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(B,R),OnTable(C),Clear(A),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(F,C),OnTable(D),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(R),Clear(C),OnTable(C),On(B,A),Holding(F,L),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),Clear(C),Holding(F,R),Clear(F),OnTable(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(C,F),EmptyArm(L),EmptyArm(R),Clear(A),On(A,C),On(F,B),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),On(C,F),Clear(C),Clear(A),Holding(A,L),Holding(D,R),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,B),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),UsedColumnsNum(2),Clear(C),OnTable(A),Holding(F,L),Holding(D,R),Clear(F),Clear(D),On(C,A)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),On(A,C),On(D,F),OnTable(F),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(2),Clear(C),Clear(A),Holding(F,L),Holding(A,R),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),On(A,F),EmptyArm(L),Holding(C,R),Clear(C),Clear(A),On(F,B),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),Clear(B),On(C,D),UsedColumnsNum(2),Clear(C),Clear(A),Holding(A,L),Holding(F,R),Clear(F),OnTable(D)
+Repeated state
+---------
+OnTable(B),On(D,C),UsedColumnsNum(2),EmptyArm(R),On(C,B),Clear(A),OnTable(A),Holding(F,L),Clear(F),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),Holding(C,R),Clear(C),Clear(A),On(A,B),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+On(A,D),Clear(B),UsedColumnsNum(2),EmptyArm(L),OnTable(C),Clear(C),On(B,A),Holding(F,R),Clear(F),OnTable(D)
+Repeated state
+---------
+Clear(B),UsedColumnsNum(2),Holding(B,R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),OnTable(D),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(L),EmptyArm(R),On(C,B),Clear(A),OnTable(A),On(D,F),On(F,C),Clear(D)
+Repeated state
+---------
+OnTable(B),UsedColumnsNum(2),EmptyArm(R),OnTable(C),Clear(A),On(A,C),Holding(F,L),Clear(F),On(D,B),Clear(D)
+Repeated state
+---------

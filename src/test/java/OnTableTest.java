@@ -1,38 +1,37 @@
-import fib.par.nonlinearplanner.Arm;
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.BlocksWorld;
-import fib.par.nonlinearplanner.operators.Leave;
-import fib.par.nonlinearplanner.operators.Operator;
-import fib.par.nonlinearplanner.operators.Stack;
-import fib.par.nonlinearplanner.predicates.On;
-import fib.par.nonlinearplanner.predicates.OnTable;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.domain.operators.Leave;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.domain.predicates.OnTable;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OnTableTest {
 
-    private void setup() {
-        BlocksWorld.blocksList = new LinkedList<Block>();
+    private BlocksWorld setup() {
+        List<Block> blocksList = new LinkedList<Block>();
         Block a = new Block("A", 1);
-        Block b = new Block("B", 3);
-        BlocksWorld.blocksList.add(a);
-        BlocksWorld.blocksList.add(b);
-        BlocksWorld.MAX_COLUMNS = 3;
+        Block b = new Block("B", 2);
+        blocksList.add(a);
+        blocksList.add(b);
+        return new BlocksWorld(3, blocksList);
     }
 
     @Test
     public void getPreOperatorsShouldReturnCorrectPreOperators() {
         // setup
-        setup();
-        Block a = BlocksWorld.getBlockFromName("A");
-        Block b = BlocksWorld.getBlockFromName("B");
+        BlocksWorld bw = setup();
+        Block a = bw.getBlockFromName("A");
+        Block b = bw.getBlockFromName("B");
 
-        OnTable onTable = new OnTable(a);
+        OnTable onTable = new OnTable(a, bw);
 
         // execute
         Set<Operator> operatorSet = onTable.getPreOperators();
@@ -40,12 +39,12 @@ public class OnTableTest {
         // validate
         Set<Operator> expectedOperators = new HashSet<Operator>();
 
-        expectedOperators.add(new Leave(a, Arm.rightArm, 2));
-        expectedOperators.add(new Leave(a, Arm.rightArm, 1));
-        expectedOperators.add(new Leave(a, Arm.rightArm, 0));
-        expectedOperators.add(new Leave(a, Arm.leftArm, 2));
-        expectedOperators.add(new Leave(a, Arm.leftArm, 1));
-        expectedOperators.add(new Leave(a, Arm.leftArm, 0));
+        expectedOperators.add(new Leave(a, Arm.rightArm, 2, bw));
+        expectedOperators.add(new Leave(a, Arm.rightArm, 1, bw));
+        expectedOperators.add(new Leave(a, Arm.rightArm, 0, bw));
+        expectedOperators.add(new Leave(a, Arm.leftArm, 2, bw));
+        expectedOperators.add(new Leave(a, Arm.leftArm, 1, bw));
+        expectedOperators.add(new Leave(a, Arm.leftArm, 0, bw));
 
         System.out.println("Expected Operators: "+expectedOperators);
         System.out.println("Operator Set: "+operatorSet);

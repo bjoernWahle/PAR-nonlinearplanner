@@ -1,35 +1,38 @@
-import fib.par.nonlinearplanner.Arm;
-import fib.par.nonlinearplanner.Block;
-import fib.par.nonlinearplanner.BlocksWorld;
-import fib.par.nonlinearplanner.operators.*;
-import fib.par.nonlinearplanner.predicates.Holding;
+import fib.par.nonlinearplanner.Operator;
+import fib.par.nonlinearplanner.domain.Arm;
+import fib.par.nonlinearplanner.domain.Block;
+import fib.par.nonlinearplanner.domain.BlocksWorld;
+import fib.par.nonlinearplanner.domain.operators.*;
+import fib.par.nonlinearplanner.domain.predicates.Holding;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HoldingTest {
-    private void setup() {
-        BlocksWorld.blocksList = new LinkedList<Block>();
+
+    private BlocksWorld setup() {
+        List<Block> blocksList = new LinkedList<Block>();
         Block a = new Block("A", 1);
         Block b = new Block("B", 2);
-        BlocksWorld.blocksList.add(a);
-        BlocksWorld.blocksList.add(b);
-        BlocksWorld.MAX_COLUMNS = 3;
+        blocksList.add(a);
+        blocksList.add(b);
+        return new BlocksWorld(3, blocksList);
     }
 
     @Test
     public void getPreOperatorsShouldReturnCorrectPreOperators() {
         // setup
-        setup();
-        Block a = BlocksWorld.getBlockFromName("A");
-        Block b = BlocksWorld.getBlockFromName("B");
+        BlocksWorld bw = setup();
+        Block a = bw.getBlockFromName("A");
+        Block b = bw.getBlockFromName("B");
         Arm arm = Arm.rightArm;
 
-        Holding holding = new Holding(b, arm);
+        Holding holding = new Holding(b, arm, bw);
 
         // execute
         Set<Operator> operatorSet = holding.getPreOperators();
@@ -44,10 +47,10 @@ public class HoldingTest {
         //expectedOperators.add(new LeftArmPickUp(a, 2));
 
         // Right Arm
-        expectedOperators.add(new RightArmUnstack(b, a));
-        expectedOperators.add(new RightArmPickUp(b, 1));
-        expectedOperators.add(new RightArmPickUp(b, 2));
-        expectedOperators.add(new RightArmPickUp(b, 3));
+        expectedOperators.add(new RightArmUnstack(b, a, bw));
+        expectedOperators.add(new RightArmPickUp(b, 1, bw));
+        expectedOperators.add(new RightArmPickUp(b, 2, bw));
+        expectedOperators.add(new RightArmPickUp(b, 3, bw));
 
 
 
