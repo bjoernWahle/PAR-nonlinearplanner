@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
 
-        String inputFileName = "input";
+        String inputFileName = "input4";
 
         URL resource = BlocksWorld.class.getResource("/"+inputFileName);
 
