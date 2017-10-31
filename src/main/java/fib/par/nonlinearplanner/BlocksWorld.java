@@ -53,7 +53,7 @@ public class BlocksWorld {
     public static void main(String[] args) {
         BlocksWorldInputParser parser = new BlocksWorldInputParser();
 
-        URL resource = BlocksWorld.class.getResource("/input2");
+        URL resource = BlocksWorld.class.getResource("/input3");
         //URL resource = BlocksWorld.class.getResource("/simple1");
 
         File file = null;
@@ -70,8 +70,8 @@ public class BlocksWorld {
             boolean validPlan = myPlanner.verifyPlan(plan);
             System.out.println("Best plan is valid: "+validPlan);
 
-            System.out.println("Output: ");
-            System.out.println(myPlanner.generateOutput());
+//            System.out.println("Output: ");
+//            System.out.println(myPlanner.generateOutput());
         } else {
             System.out.println("No plan could be found.");
         }
