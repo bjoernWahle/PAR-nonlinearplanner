@@ -1,6 +1,5 @@
 package fib.par.nonlinearplanner.domain;
 
-import com.sun.java.browser.plugin2.DOM;
 import fib.par.nonlinearplanner.Planner;
 import fib.par.nonlinearplanner.Predicate;
 import fib.par.nonlinearplanner.State;
